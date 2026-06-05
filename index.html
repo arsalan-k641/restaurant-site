@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>اتوماسیون رستوران و کافه</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#020617;
+    color:white;
+    overflow-x:hidden;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+section{
+    padding:120px 0;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(59,130,246,.20),
+    transparent 35%),
+    radial-gradient(circle at bottom left,
+    rgba(249,115,22,.18),
+    transparent 35%),
+    #020617;
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:4rem;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    color:#cbd5e1;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 28px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    display:inline-block;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:#f97316;
+    color:white;
+    box-shadow:0 10px 30px rgba(249,115,22,.3);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+}
+
+/* MOCKUP */
+.mockup{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    backdrop-filter:blur(20px);
+    padding:15px;
+}
+
+.mockup img{
+    width:100%;
+    border-radius:16px;
+}
+
+/* SECTIONS */
+.section-title{
+    text-align:center;
+    font-size:2.8rem;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#94a3b8;
+    max-width:700px;
+    margin:auto auto 60px;
+}
+
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card p{
+    color:#94a3b8;
+}
+
+/* SCREENS */
+.screens{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+}
+
+.screen{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.screen img{
+    width:100%;
+    display:block;
+}
+
+.screen h3{
+    padding:20px 20px 0;
+}
+
+.screen p{
+    padding:0 20px 20px;
+    color:#94a3b8;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:120px 40px;
+    border-radius:40px;
+    background:
+    linear-gradient(135deg,
+    rgba(59,130,246,.25),
+    rgba(249,115,22,.20));
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    backdrop-filter:blur(8px);
+    z-index:999;
+}
+
+.modal-box{
+    background:#0f172a;
+    padding:30px;
+    border-radius:20px;
+    width:min(420px,90%);
+    text-align:center;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.modal-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:20px;
+}
+
+.close-btn{
+    margin-top:15px;
+    background:none;
+    border:none;
+    color:#94a3b8;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    padding:40px 0;
+    text-align:center;
+    color:#64748b;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.hero-content{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:2.8rem;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+
+<div>
+<h1>مدیریت هوشمند رستوران و کافه</h1>
+
+<p>
+ثبت سفارش، صندوق فروش، حسابداری، انبار و گزارش‌گیری
+در یک سیستم یکپارچه و مدرن.
+</p>
+
+<div class="buttons">
+
+<a href="#features" class="btn btn-primary">
+مشاهده امکانات
+</a>
+
+<a onclick="openContact()" class="btn btn-secondary">
+درخواست مشاوره
+</a>
+
+</div>
+</div>
+
+<div class="mockup">
+<img src="images/dashboard.png" alt="داشبورد">
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+
+<h2 class="section-title">همه چیز در یک سیستم</h2>
+
+<p class="section-subtitle">
+مدیریت کامل رستوران از سفارش تا گزارش فروش
+</p>
+
+<div class="features">
+
+<div class="card"><h3>ثبت سفارش</h3><p>سریع و دقیق</p></div>
+<div class="card"><h3>صندوق فروش</h3><p>مدیریت پرداخت‌ها</p></div>
+<div class="card"><h3>انبار</h3><p>کنترل موجودی</p></div>
+<div class="card"><h3>حسابداری</h3><p>سود و هزینه</p></div>
+<div class="card"><h3>گزارش فروش</h3><p>تحلیل عملکرد</p></div>
+<div class="card"><h3>منوی QR</h3><p>سفارش مشتری</p></div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SCREENS -->
+<section>
+<div class="container">
+
+<h2 class="section-title">نمایی از سیستم</h2>
+
+<p class="section-subtitle">
+رابط‌های ساده و حرفه‌ای
+</p>
+
+<div class="screens">
+
+<div class="screen">
+<img src="images/mobile-menu.png">
+<h3>منوی دیجیتال</h3>
+<p>سفارش مشتری</p>
+</div>
+
+<div class="screen">
+<img src="images/dashboard.png">
+<h3>داشبورد</h3>
+<p>مدیریت کامل</p>
+</div>
+
+<div class="screen">
+<img src="images/reports.png">
+<h3>گزارش‌ها</h3>
+<p>تحلیل فروش</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT CTA (باز کردن مودال) -->
+<section>
+<div class="container">
+
+<div class="cta">
+
+<h2>آماده شروع هستید؟</h2>
+
+<p>برای مشاوره رایگان تماس بگیرید</p>
+
+<a onclick="openContact()" class="btn btn-primary">
+درخواست مشاوره
+</a>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+© 2026 اتوماسیون رستوران و کافه
+</footer>
+
+<!-- MODAL -->
+<div id="contactModal" class="modal">
+
+<div class="modal-box">
+
+<h2>راه ارتباط با ما</h2>
+<p>یکی از روش‌های زیر را انتخاب کنید</p>
+
+<div class="modal-buttons">
+
+<a href="tel:09351417807" class="btn btn-primary">
+📞 تماس مستقیم
+</a>
+
+<a href="https://wa.me/989351417807?text=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم"
+class="btn btn-secondary" target="_blank">
+💬 واتساپ
+</a>
+
+<a href="https://ble.ir/USERNAME"
+class="btn btn-secondary" target="_blank">
+💬 بله
+</a>
+
+</div>
+
+<button class="close-btn" onclick="closeContact()">بستن</button>
+
+</div>
+
+</div>
+
+<script>
+function openContact(){
+    document.getElementById("contactModal").style.display = "flex";
+}
+
+function closeContact(){
+    document.getElementById("contactModal").style.display = "none";
+}
+
+window.onclick = function(event){
+    let modal = document.getElementById("contactModal");
+    if(event.target === modal){
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
