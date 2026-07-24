@@ -3,25 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>اتوماسیون رستوران و کافه</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
     font-family:'Vazirmatn',sans-serif;
@@ -30,29 +19,117 @@ body{
     overflow-x:hidden;
 }
 
-.container{
-    width:min(1200px,90%);
-    margin:auto;
+::selection{
+    background:rgba(249,115,22,.3);
+    color:white;
 }
 
-section{
-    padding:120px 0;
+.container{width:min(1200px,90%);margin:auto}
+section{padding:120px 0}
+
+/* ── NAVBAR ── */
+.navbar{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:18px 0;
+    transition:.4s;
+    background:transparent;
 }
 
-/* HERO */
+.navbar.scrolled{
+    background:rgba(2,6,23,.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    padding:12px 0;
+}
+
+.navbar .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.3rem;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    width:38px;height:38px;
+    background:linear-gradient(135deg,#f97316,#fb923c);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#94a3b8;
+    text-decoration:none;
+    font-size:.95rem;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{color:white}
+
+.nav-cta{
+    padding:10px 22px!important;
+    background:#f97316!important;
+    color:white!important;
+    border-radius:999px;
+    font-weight:700!important;
+    box-shadow:0 4px 20px rgba(249,115,22,.3);
+}
+
+.nav-cta:hover{
+    background:#ea580c!important;
+    transform:translateY(-2px);
+}
+
+.mobile-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+/* ── HERO ── */
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
-
+    padding-top:100px;
     background:
-    radial-gradient(circle at top right,
-    rgba(59,130,246,.20),
-    transparent 35%),
-    radial-gradient(circle at bottom left,
-    rgba(249,115,22,.18),
-    transparent 35%),
-    #020617;
+        radial-gradient(ellipse 80% 60% at top right,rgba(59,130,246,.15),transparent),
+        radial-gradient(ellipse 60% 50% at bottom left,rgba(249,115,22,.12),transparent),
+        #020617;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent);
 }
 
 .hero-content{
@@ -60,359 +137,998 @@ section{
     grid-template-columns:1fr 1fr;
     gap:60px;
     align-items:center;
+    position:relative;
+    z-index:1;
 }
 
-.hero h1{
-    font-size:4rem;
-    line-height:1.2;
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(249,115,22,.1);
+    border:1px solid rgba(249,115,22,.25);
+    color:#fb923c;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:500;
     margin-bottom:25px;
 }
 
-.hero p{
-    font-size:1.2rem;
-    color:#cbd5e1;
-    margin-bottom:35px;
+.hero h1{
+    font-size:3.8rem;
+    line-height:1.25;
+    margin-bottom:25px;
+    font-weight:900;
 }
 
-.buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+.hero h1 .gradient{
+    background:linear-gradient(135deg,#f97316,#fbbf24);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
 }
+
+.hero p{
+    font-size:1.15rem;
+    color:#94a3b8;
+    margin-bottom:40px;
+    line-height:1.9;
+    max-width:500px;
+}
+
+.buttons{display:flex;gap:15px;flex-wrap:wrap}
 
 .btn{
-    padding:16px 28px;
+    padding:15px 30px;
     border-radius:999px;
     text-decoration:none;
     font-weight:700;
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
     cursor:pointer;
+    transition:.3s;
+    font-size:.95rem;
+    border:none;
+    font-family:inherit;
 }
 
 .btn-primary{
-    background:#f97316;
+    background:linear-gradient(135deg,#f97316,#ea580c);
     color:white;
-    box-shadow:0 10px 30px rgba(249,115,22,.3);
+    box-shadow:0 10px 40px rgba(249,115,22,.35);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 50px rgba(249,115,22,.45);
 }
 
 .btn-secondary{
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.12);
     color:white;
+    background:rgba(255,255,255,.04);
 }
 
-/* MOCKUP */
+.btn-secondary:hover{
+    background:rgba(255,255,255,.08);
+    transform:translateY(-3px);
+}
+
+.hero-mockup{position:relative}
+
+.mockup-glow{
+    position:absolute;
+    width:300px;height:300px;
+    background:rgba(249,115,22,.15);
+    filter:blur(100px);
+    border-radius:50%;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    z-index:0;
+}
+
 .mockup{
     background:rgba(255,255,255,.04);
     border:1px solid rgba(255,255,255,.08);
     border-radius:24px;
     backdrop-filter:blur(20px);
-    padding:15px;
+    padding:12px;
+    position:relative;
+    z-index:1;
 }
 
 .mockup img{
     width:100%;
     border-radius:16px;
+    display:block;
 }
 
-/* SECTIONS */
-.section-title{
-    text-align:center;
-    font-size:2.8rem;
-    margin-bottom:20px;
-}
+/* ── STATS ── */
+.stats{padding:0}
 
-.section-subtitle{
-    text-align:center;
-    color:#94a3b8;
-    max-width:700px;
-    margin:auto auto 60px;
-}
-
-/* FEATURES */
-.features{
+.stats .container{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    padding:30px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.card p{
-    color:#94a3b8;
-}
-
-/* SCREENS */
-.screens{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-    gap:30px;
-}
-
-.screen{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
     border-radius:24px;
     overflow:hidden;
 }
 
-.screen img{
+.stat-item{
+    padding:40px 30px;
+    text-align:center;
+    position:relative;
+}
+
+.stat-item:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    left:0;top:20%;bottom:20%;
+    width:1px;
+    background:rgba(255,255,255,.08);
+}
+
+.stat-number{
+    font-size:2.5rem;
+    font-weight:900;
+    background:linear-gradient(135deg,#f97316,#fbbf24);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.stat-label{color:#64748b;font-size:.9rem;margin-top:6px}
+
+/* ── SECTION HEADERS ── */
+.section-title{
+    text-align:center;
+    font-size:2.8rem;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#64748b;
+    max-width:600px;
+    margin:0 auto 60px;
+    line-height:1.9;
+}
+
+/* ── FEATURES ── */
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    padding:35px 28px;
+    transition:.4s cubic-bezier(.4,0,.2,1);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;right:0;
+    width:120px;height:120px;
+    background:radial-gradient(circle,rgba(249,115,22,.08),transparent 70%);
+    opacity:0;
+    transition:.4s;
+}
+
+.card:hover::before{opacity:1}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(249,115,22,.2);
+    background:rgba(255,255,255,.05);
+}
+
+.card-icon{
+    width:56px;height:56px;
+    background:rgba(249,115,22,.1);
+    border:1px solid rgba(249,115,22,.15);
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    color:#f97316;
+    font-size:1.4rem;
+}
+
+.card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px}
+.card p{color:#64748b;font-size:.9rem;line-height:1.8}
+
+/* ── DASHBOARD PREVIEW ── */
+.dashboard-section{
+    background:
+        radial-gradient(ellipse 60% 50% at center,rgba(59,130,246,.08),transparent),
+        transparent;
+}
+
+.dash-preview{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.dash-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.dash-header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.dash-dots{display:flex;gap:6px}
+
+.dash-dots span{
+    width:12px;height:12px;
+    border-radius:50%;
+}
+
+.dash-dots span:nth-child(1){background:#ef4444}
+.dash-dots span:nth-child(2){background:#eab308}
+.dash-dots span:nth-child(3){background:#22c55e}
+
+.dash-url{
+    background:rgba(255,255,255,.06);
+    padding:6px 16px;
+    border-radius:8px;
+    font-size:.8rem;
+    color:#64748b;
+    direction:ltr;
+}
+
+.dash-body{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    min-height:400px;
+}
+
+.dash-sidebar{
+    border-left:1px solid rgba(255,255,255,.06);
+    padding:20px 16px;
+}
+
+.dash-sidebar-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.85rem;
+    color:#64748b;
+    margin-bottom:4px;
+    cursor:default;
+    transition:.2s;
+}
+
+.dash-sidebar-item.active{
+    background:rgba(249,115,22,.1);
+    color:#f97316;
+}
+
+.dash-sidebar-item:hover:not(.active){
+    background:rgba(255,255,255,.04);
+    color:#cbd5e1;
+}
+
+.dash-main{
+    padding:24px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:auto 1fr;
+    gap:16px;
+}
+
+.dash-stat{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:14px;
+    padding:18px;
+}
+
+.dash-stat-label{font-size:.75rem;color:#64748b;margin-bottom:8px}
+.dash-stat-value{font-size:1.5rem;font-weight:800}
+
+.dash-stat-change{
+    font-size:.75rem;
+    margin-top:4px;
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+.dash-stat-change.up{color:#22c55e}
+.dash-stat-change.down{color:#ef4444}
+
+.dash-chart{
+    grid-column:1/-1;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:14px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.dash-chart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.dash-chart-title{font-size:.9rem;font-weight:700}
+
+.dash-chart-legend{
+    display:flex;gap:16px;font-size:.75rem;color:#64748b;
+}
+
+.dash-chart-legend span::before{
+    content:'';
+    display:inline-block;
+    width:8px;height:8px;
+    border-radius:50%;
+    margin-left:6px;
+}
+
+.dash-chart-legend .leg-1::before{background:#f97316}
+.dash-chart-legend .leg-2::before{background:#3b82f6}
+
+.chart-bars{
+    flex:1;
+    display:flex;
+    align-items:flex-end;
+    gap:12px;
+    padding-top:10px;
+}
+
+.chart-bar-group{
+    flex:1;
+    display:flex;
+    align-items:flex-end;
+    gap:4px;
+    height:100%;
+}
+
+.chart-bar{
+    flex:1;
+    border-radius:6px 6px 2px 2px;
+    min-height:8px;
+    transition:.6s;
+}
+
+.chart-bar.orange{background:linear-gradient(to top,#ea580c,#fb923c)}
+.chart-bar.blue{background:linear-gradient(to top,#2563eb,#60a5fa)}
+
+.chart-labels{
+    display:flex;
+    gap:12px;
+    margin-top:10px;
+}
+
+.chart-labels span{
+    flex:1;
+    text-align:center;
+    font-size:.7rem;
+    color:#475569;
+}
+
+/* ── SCREENS ── */
+.screens-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.screen{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.screen:hover{
+    transform:translateY(-8px);
+    border-color:rgba(249,115,22,.15);
+}
+
+.screen-img{
     width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
     display:block;
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-.screen h3{
-    padding:20px 20px 0;
+.screen-body{padding:24px}
+
+.screen-body h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.screen-body p{color:#64748b;font-size:.9rem;line-height:1.7}
+
+.screen-tags{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+    flex-wrap:wrap;
 }
 
-.screen p{
-    padding:0 20px 20px;
-    color:#94a3b8;
+.screen-tags span{
+    background:rgba(249,115,22,.08);
+    color:#fb923c;
+    padding:4px 12px;
+    border-radius:999px;
+    font-size:.75rem;
 }
 
-/* CTA */
+/* ── TESTIMONIAL ── */
+.testimonial-card{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    position:relative;
+}
+
+.testimonial-card .quote-icon{
+    font-size:3rem;
+    color:rgba(249,115,22,.2);
+    margin-bottom:20px;
+    line-height:1;
+}
+
+.testimonial-text{
+    font-size:1.2rem;
+    color:#cbd5e1;
+    line-height:2;
+    margin-bottom:30px;
+}
+
+.testimonial-author{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.testimonial-avatar{
+    width:50px;height:50px;
+    background:linear-gradient(135deg,#f97316,#fbbf24);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;
+    font-size:1.1rem;
+}
+
+.testimonial-info h4{font-size:1rem;font-weight:700}
+.testimonial-info p{font-size:.85rem;color:#64748b}
+
+/* ── CTA ── */
 .cta{
     text-align:center;
-    padding:120px 40px;
-    border-radius:40px;
+    padding:100px 40px;
+    border-radius:32px;
     background:
-    linear-gradient(135deg,
-    rgba(59,130,246,.25),
-    rgba(249,115,22,.20));
+        linear-gradient(135deg,rgba(249,115,22,.15),rgba(59,130,246,.1));
+    border:1px solid rgba(249,115,22,.1);
+    position:relative;
+    overflow:hidden;
 }
 
-/* MODAL */
+.cta::before{
+    content:'';
+    position:absolute;
+    width:400px;height:400px;
+    background:rgba(249,115,22,.1);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-200px;right:-100px;
+}
+
+.cta h2{font-size:2.5rem;font-weight:900;margin-bottom:15px;position:relative}
+.cta p{color:#94a3b8;margin-bottom:35px;font-size:1.1rem;position:relative}
+
+/* ── MODAL ── */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.7);
     display:none;
     justify-content:center;
     align-items:center;
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
     z-index:999;
+}
+
+.modal.show{
+    display:flex;
+    animation:fadeIn .3s;
 }
 
 .modal-box{
     background:#0f172a;
-    padding:30px;
-    border-radius:20px;
-    width:min(420px,90%);
+    padding:40px;
+    border-radius:24px;
+    width:min(440px,90%);
     text-align:center;
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.08);
+    animation:slideUp .4s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+.modal-box h2{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+.modal-box>p{color:#64748b;font-size:.9rem;margin-bottom:10px}
+
+.modal-phone{
+    direction:ltr;
+    font-size:1.3rem;
+    font-weight:800;
+    color:#f97316;
+    margin-bottom:6px;
+    letter-spacing:1px;
+}
+
+.modal-name{
+    color:#cbd5e1;
+    font-size:1rem;
+    font-weight:500;
+    margin-bottom:25px;
 }
 
 .modal-buttons{
     display:flex;
     flex-direction:column;
-    gap:12px;
-    margin-top:20px;
+    gap:10px;
+}
+
+.modal-buttons .btn{
+    justify-content:center;
+    font-size:.95rem;
+    padding:14px 24px;
+}
+
+.modal-btn-icon{
+    font-size:1.1rem;
+    width:24px;
+    text-align:center;
 }
 
 .close-btn{
-    margin-top:15px;
+    margin-top:20px;
     background:none;
     border:none;
-    color:#94a3b8;
+    color:#475569;
     cursor:pointer;
+    font-family:inherit;
+    font-size:.9rem;
+    transition:.2s;
 }
 
-/* FOOTER */
+.close-btn:hover{color:white}
+
+/* ── FOOTER ── */
 footer{
-    padding:40px 0;
+    padding:50px 0;
     text-align:center;
-    color:#64748b;
+    color:#334155;
+    font-size:.85rem;
+    border-top:1px solid rgba(255,255,255,.04);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-.hero-content{
-    grid-template-columns:1fr;
+/* ── SCROLL ANIMATIONS ── */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:.8s cubic-bezier(.4,0,.2,1);
 }
 
-.hero h1{
-    font-size:2.8rem;
-}
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
 }
 
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+    .features-grid{grid-template-columns:repeat(2,1fr)}
+    .screens-grid{grid-template-columns:repeat(2,1fr)}
+    .screens-grid .screen:last-child{grid-column:1/-1;max-width:400px;margin:auto;width:100%}
+    .dash-body{grid-template-columns:1fr}
+    .dash-sidebar{display:none}
+    .stats .container{grid-template-columns:repeat(2,1fr)}
+    .stat-item:nth-child(2)::after{display:none}
+}
+
+@media(max-width:768px){
+    .nav-links{display:none}
+    .mobile-toggle{display:block}
+    .hero-content{grid-template-columns:1fr;gap:40px;text-align:center}
+    .hero h1{font-size:2.5rem}
+    .hero p{margin:0 auto 35px}
+    .buttons{justify-content:center}
+    .hero-mockup{max-width:500px;margin:auto}
+    .section-title{font-size:2rem}
+    .features-grid{grid-template-columns:1fr}
+    .screens-grid{grid-template-columns:1fr}
+    .screens-grid .screen:last-child{max-width:none}
+    .dash-main{grid-template-columns:1fr}
+    .stats .container{grid-template-columns:1fr}
+    .stat-item::after{display:none!important}
+    .stat-item{border-bottom:1px solid rgba(255,255,255,.06)}
+    .stat-item:last-child{border-bottom:none}
+    .cta{padding:60px 24px}
+    .cta h2{font-size:1.8rem}
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="container">
+    <div class="logo">
+        <div class="logo-icon">☰</div>
+        رستوران‌پلاس
+    </div>
+    <ul class="nav-links">
+        <li><a href="#features">امکانات</a></li>
+        <li><a href="#dashboard">داشبورد</a></li>
+        <li><a href="#screens">نمایش</a></li>
+        <li><a href="#review">نظرات</a></li>
+        <li><a onclick="openContact()" class="nav-cta" style="cursor:pointer">مشاوره رایگان</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="openContact()">☰</button>
+</div>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
 <div class="container">
 <div class="hero-content">
-
 <div>
-<h1>مدیریت هوشمند رستوران و کافه</h1>
-
-<p>
-ثبت سفارش، صندوق فروش، حسابداری، انبار و گزارش‌گیری
-در یک سیستم یکپارچه و مدرن.
-</p>
-
-<div class="buttons">
-
-<a href="#features" class="btn btn-primary">
-مشاهده امکانات
-</a>
-
-<a onclick="openContact()" class="btn btn-secondary">
-درخواست مشاوره
-</a>
-
+    <div class="hero-badge reveal">✨ نسخه جدید ۲۰۲۶ منتشر شد</div>
+    <h1 class="reveal reveal-delay-1">
+        مدیریت هوشمند<br>
+        <span class="gradient">رستوران و کافه</span>
+    </h1>
+    <p class="reveal reveal-delay-2">
+        ثبت سفارش، صندوق فروش، حسابداری، مدیریت انبار و گزارش‌گیری دقیق — همه در یک سیستم یکپارچه و مدرن.
+    </p>
+    <div class="buttons reveal reveal-delay-3">
+        <a href="#features" class="btn btn-primary">مشاهده امکانات ←</a>
+        <a onclick="openContact()" class="btn btn-secondary" style="cursor:pointer">📞 درخواست مشاوره</a>
+    </div>
+</div>
+<div class="hero-mockup reveal reveal-delay-4">
+    <div class="mockup-glow"></div>
+    <div class="mockup">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=480&fit=crop&auto=format" alt="داشبورد سیستم مدیریت رستوران">
+    </div>
 </div>
 </div>
-
-<div class="mockup">
-<img src="images/dashboard.png" alt="داشبورد">
 </div>
+</section>
 
-</div>
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+    <div class="stat-item reveal">
+        <div class="stat-number">۱۲۰+</div>
+        <div class="stat-label">رستوران فعال</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number">۵۰۰K</div>
+        <div class="stat-label">سفارش ثبت‌شده</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number">۹۹.۹٪</div>
+        <div class="stat-label">آپتایم سرور</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number">۴.۹⭐</div>
+        <div class="stat-label">رضایت مشتریان</div>
+    </div>
 </div>
 </section>
 
 <!-- FEATURES -->
 <section id="features">
 <div class="container">
-
-<h2 class="section-title">همه چیز در یک سیستم</h2>
-
-<p class="section-subtitle">
-مدیریت کامل رستوران از سفارش تا گزارش فروش
-</p>
-
-<div class="features">
-
-<div class="card"><h3>ثبت سفارش</h3><p>سریع و دقیق</p></div>
-<div class="card"><h3>صندوق فروش</h3><p>مدیریت پرداخت‌ها</p></div>
-<div class="card"><h3>انبار</h3><p>کنترل موجودی</p></div>
-<div class="card"><h3>حسابداری</h3><p>سود و هزینه</p></div>
-<div class="card"><h3>گزارش فروش</h3><p>تحلیل عملکرد</p></div>
-<div class="card"><h3>منوی QR</h3><p>سفارش مشتری</p></div>
-
+    <h2 class="section-title reveal">همه چیز در یک سیستم</h2>
+    <p class="section-subtitle reveal reveal-delay-1">مدیریت کامل رستوران از لحظه ثبت سفارش تا تحلیل گزارش فروش روزانه</p>
+    <div class="features-grid">
+        <div class="card reveal">
+            <div class="card-icon">📋</div>
+            <h3>ثبت سفارش سریع</h3>
+            <p>ثبت سفارش با چند لمس، ارسال مستقیم به آشپزخانه و بارهابار بدون اتلاف وقت</p>
+        </div>
+        <div class="card reveal reveal-delay-1">
+            <div class="card-icon">💰</div>
+            <h3>صندوق فروش</h3>
+            <p>پشتیبانی از پرداخت نقدی، کارتخوان، کیف پول و تقسیط با تسویه خودکار</p>
+        </div>
+        <div class="card reveal reveal-delay-2">
+            <div class="card-icon">📦</div>
+            <h3>مدیریت انبار</h3>
+            <p>هشدار کمبود موجودی، ارتباط خودکار با سفارشات و مدیریت ورود و خروج کالا</p>
+        </div>
+        <div class="card reveal reveal-delay-1">
+            <div class="card-icon">📊</div>
+            <h3>حسابداری مالی</h3>
+            <p>محاسبه خودکار سود و زیان، هزینه‌های جاری و گزارش مالی لحظه‌ای</p>
+        </div>
+        <div class="card reveal reveal-delay-2">
+            <div class="card-icon">📈</div>
+            <h3>گزارش فروش</h3>
+            <p>نمودارهای تحلیلی فروش ساعتی، روزانه و ماهانه با مقایسه دوره‌های مختلف</p>
+        </div>
+        <div class="card reveal reveal-delay-3">
+            <div class="card-icon">📱</div>
+            <h3>منوی QR دیجیتال</h3>
+            <p>مشتریان با اسکن QR منو را ببینند و مستقیماً سفارش دهند بدون نیاز به منو کاغذی</p>
+        </div>
+    </div>
 </div>
+</section>
 
+<!-- DASHBOARD PREVIEW -->
+<section id="dashboard" class="dashboard-section">
+<div class="container">
+    <h2 class="section-title reveal">داشبورد مدیریتی</h2>
+    <p class="section-subtitle reveal reveal-delay-1">کنترل کامل کسب‌وکار در یک نگاه</p>
+    <div class="dash-preview reveal reveal-delay-2">
+        <div class="dash-header">
+            <div class="dash-header-right">
+                <div class="dash-dots"><span></span><span></span><span></span></div>
+                <div class="dash-url">app.restaurantplus.ir/dashboard</div>
+            </div>
+        </div>
+        <div class="dash-body">
+            <div class="dash-sidebar">
+                <div class="dash-sidebar-item active">📊 داشبورد</div>
+                <div class="dash-sidebar-item">📋 سفارشات</div>
+                <div class="dash-sidebar-item">🍽️ منو</div>
+                <div class="dash-sidebar-item">📦 انبار</div>
+                <div class="dash-sidebar-item">👥 مشتریان</div>
+                <div class="dash-sidebar-item">💰 صندوق</div>
+                <div class="dash-sidebar-item">📈 گزارشات</div>
+                <div class="dash-sidebar-item">⚙️ تنظیمات</div>
+            </div>
+            <div class="dash-main">
+                <div class="dash-stat">
+                    <div class="dash-stat-label">فروش امروز</div>
+                    <div class="dash-stat-value" style="color:#f97316">۱۲.۸ M</div>
+                    <div class="dash-stat-change up">↑ ۱۸٪ نسبت به دیروز</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-label">سفارشات</div>
+                    <div class="dash-stat-value">۸۷</div>
+                    <div class="dash-stat-change up">↑ ۱۲٪</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-label">میانگین سفارش</div>
+                    <div class="dash-stat-value">۱۴۷ K</div>
+                    <div class="dash-stat-change down">↓ ۳٪</div>
+                </div>
+                <div class="dash-chart">
+                    <div class="dash-chart-header">
+                        <div class="dash-chart-title">نمودار فروش هفتگی</div>
+                        <div class="dash-chart-legend">
+                            <span class="leg-1">این هفته</span>
+                            <span class="leg-2">هفته قبل</span>
+                        </div>
+                    </div>
+                    <div class="chart-bars">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:45%"></div>
+                            <div class="chart-bar blue" style="height:35%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:60%"></div>
+                            <div class="chart-bar blue" style="height:50%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:75%"></div>
+                            <div class="chart-bar blue" style="height:55%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:50%"></div>
+                            <div class="chart-bar blue" style="height:65%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:85%"></div>
+                            <div class="chart-bar blue" style="height:60%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:95%"></div>
+                            <div class="chart-bar blue" style="height:70%"></div>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar orange" style="height:70%"></div>
+                            <div class="chart-bar blue" style="height:45%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>شنبه</span><span>یک</span><span>دو</span><span>سه</span><span>چهار</span><span>پنج</span><span>جمعه</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
 <!-- SCREENS -->
-<section>
+<section id="screens">
 <div class="container">
-
-<h2 class="section-title">نمایی از سیستم</h2>
-
-<p class="section-subtitle">
-رابط‌های ساده و حرفه‌ای
-</p>
-
-<div class="screens">
-
-<div class="screen">
-<img src="images/mobile-menu.png">
-<h3>منوی دیجیتال</h3>
-<p>سفارش مشتری</p>
-</div>
-
-<div class="screen">
-<img src="images/dashboard.png">
-<h3>داشبورد</h3>
-<p>مدیریت کامل</p>
-</div>
-
-<div class="screen">
-<img src="images/reports.png">
-<h3>گزارش‌ها</h3>
-<p>تحلیل فروش</p>
-</div>
-
-</div>
-
+    <h2 class="section-title reveal">نمایی از سیستم</h2>
+    <p class="section-subtitle reveal reveal-delay-1">رابط کاربری ساده، حرفه‌ای و پاسخگو</p>
+    <div class="screens-grid">
+        <div class="screen reveal">
+            <img class="screen-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=375&fit=crop&auto=format" alt="منوی دیجیتال رستوران">
+            <div class="screen-body">
+                <h3>منوی دیجیتال مشتری</h3>
+                <p>مشتری با اسکن QR منو را مشاهده و سفارش خود را ثبت می‌کند</p>
+                <div class="screen-tags">
+                    <span>ریسپانسیو</span>
+                    <span>فارسی</span>
+                    <span>سریع</span>
+                </div>
+            </div>
+        </div>
+        <div class="screen reveal reveal-delay-1">
+            <img class="screen-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=375&fit=crop&auto=format" alt="صفحه صندوق و گارسون">
+            <div class="screen-body">
+                <h3>صفحه گارسون و صندوق</h3>
+                <p>ثبت سریع سفارش، تقسیم صورت‌حساب و مدیریت میزها</p>
+                <div class="screen-tags">
+                    <span>تاچ‌فرندلی</span>
+                    <span>آفلاین</span>
+                </div>
+            </div>
+        </div>
+        <div class="screen reveal reveal-delay-2">
+            <img class="screen-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=375&fit=crop&auto=format" alt="گزارشات و تحلیل فروش">
+            <div class="screen-body">
+                <h3>گزارشات و تحلیل</h3>
+                <p>نمودارهای فروش، پرفروش‌ترین‌ها و تحلیل سودآوری</p>
+                <div class="screen-tags">
+                    <span>اکسپورت</span>
+                    <span>PDF</span>
+                    <span>اکسل</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
-<!-- CONTACT CTA (باز کردن مودال) -->
+<!-- TESTIMONIAL -->
+<section id="review">
+<div class="container">
+    <div class="testimonial-card reveal">
+        <div class="quote-icon">❝</div>
+        <p class="testimonial-text">
+            بعد از استفاده از این سیستم، سرعت سرویس‌دهی ما ۴۰ درصد افزایش پیدا کرد.
+            دیگه نیازی به دفترچه سفارش و محاسبه دستی نداریم. همه چیز خودکاره!
+        </p>
+        <div class="testimonial-author">
+            <div class="testimonial-avatar">م</div>
+            <div class="testimonial-info">
+                <h4>محمد رضایی</h4>
+                <p>مدیر رستوران گل‌ها — تهران</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CTA -->
 <section>
 <div class="container">
-
-<div class="cta">
-
-<h2>آماده شروع هستید؟</h2>
-
-<p>برای مشاوره رایگان تماس بگیرید</p>
-
-<a onclick="openContact()" class="btn btn-primary">
-درخواست مشاوره
-</a>
-
+<div class="cta reveal">
+    <h2>آماده ارتقای کسب‌وکارتان هستید؟</h2>
+    <p>همین الان مشاوره رایگان بگیرید و تفاوت را حس کنید</p>
+    <a onclick="openContact()" class="btn btn-primary" style="cursor:pointer;position:relative">
+        🚀 شروع رایگان
+    </a>
 </div>
-
 </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-© 2026 اتوماسیون رستوران و کافه
+<div class="container">
+    <p>© ۲۰۲۶ رستوران‌پلاس — طراحی و توسعه توسط <span style="color:#94a3b8">ارسلان</span></p>
+</div>
 </footer>
 
 <!-- MODAL -->
 <div id="contactModal" class="modal">
-
 <div class="modal-box">
-
-<h2>راه ارتباط با ما</h2>
-<p>یکی از روش‌های زیر را انتخاب کنید</p>
-
-<div class="modal-buttons">
-
-<a href="tel:09351417807" class="btn btn-primary">
-📞 تماس مستقیم
-</a>
-
-<a href="https://wa.me/989351417807?text=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم"
-class="btn btn-secondary" target="_blank">
-💬 واتساپ
-</a>
-
-<a href="https://ble.ir/USERNAME"
-class="btn btn-secondary" target="_blank">
-💬 بله
-</a>
-
+    <h2>راه ارتباط با ما</h2>
+    <p>از هر طریقی که راحت‌ترید در ارتباط باشید</p>
+    <div class="modal-phone">0935-141-7807</div>
+    <div class="modal-name">ارسلان</div>
+    <div class="modal-buttons">
+        <a href="tel:09351417807" class="btn btn-primary">
+            <span class="modal-btn-icon">📞</span> تماس مستقیم
+        </a>
+        <a href="sms:09351417807?body=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary">
+            <span class="modal-btn-icon">💬</span> ارسال پیامک
+        </a>
+        <a href="https://t.me/+989351417807" class="btn btn-secondary" target="_blank">
+            <span class="modal-btn-icon">✈️</span> تلگرام
+        </a>
+        <a href="https://wa.me/989351417807?text=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary" target="_blank">
+            <span class="modal-btn-icon">💚</span> واتساپ
+        </a>
+        <a href="https://ble.ir/09351417807" class="btn btn-secondary" target="_blank">
+            <span class="modal-btn-icon">🔵</span> بله
+        </a>
+        <a href="https://rubika.ir/+989351417807" class="btn btn-secondary" target="_blank">
+            <span class="modal-btn-icon">🟣</span> روبیکا
+        </a>
+    </div>
+    <button class="close-btn" onclick="closeContact()">بستن ✕</button>
 </div>
-
-<button class="close-btn" onclick="closeContact()">بستن</button>
-
-</div>
-
 </div>
 
 <script>
+window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+    });
+},{threshold:0.15,rootMargin:'0px 0px -50px 0px'});
+revealEls.forEach(el=>observer.observe(el));
+
 function openContact(){
-    document.getElementById("contactModal").style.display = "flex";
+    document.getElementById('contactModal').classList.add('show');
+    document.body.style.overflow='hidden';
 }
-
 function closeContact(){
-    document.getElementById("contactModal").style.display = "none";
+    document.getElementById('contactModal').classList.remove('show');
+    document.body.style.overflow='';
 }
-
-window.onclick = function(event){
-    let modal = document.getElementById("contactModal");
-    if(event.target === modal){
-        modal.style.display = "none";
-    }
-}
+document.getElementById('contactModal').addEventListener('click',function(e){
+    if(e.target===this) closeContact();
+});
+document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeContact();
+});
 </script>
 
 </body>
