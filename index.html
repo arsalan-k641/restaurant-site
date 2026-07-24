@@ -237,12 +237,54 @@ section{padding:120px 0}
     padding:12px;
     position:relative;
     z-index:1;
+    overflow: hidden;
 }
 
-.mockup img{
+/* ── SLIDER STYLES ── */
+.slider-wrapper{
+    position:relative;
     width:100%;
     border-radius:16px;
+    overflow:hidden;
+}
+
+.slider-track{
+    display:flex;
+    transition:transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slider-track img{
+    width:100%;
+    flex-shrink:0;
+    border-radius:16px;
     display:block;
+    object-fit:cover;
+}
+
+.slider-dots{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    z-index:2;
+}
+
+.slider-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,.4);
+    cursor:pointer;
+    transition:.3s;
+    border:none;
+}
+
+.slider-dot.active{
+    background:#f97316;
+    box-shadow:0 0 10px rgba(249,115,22,.5);
+    transform:scale(1.2);
 }
 
 /* ── STATS ── */
@@ -830,7 +872,22 @@ footer{
 <div class="hero-mockup reveal reveal-delay-4">
     <div class="mockup-glow"></div>
     <div class="mockup">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=480&fit=crop&auto=format" alt="داشبورد سیستم مدیریت رستوران">
+        
+        <!-- SLIDER START -->
+        <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+                <img src="images/dashboard.png" alt="داشبورد سیستم مدیریت رستوران">
+                <img src="images/mobile-menu.png" alt="منوی موبایل رستوران">
+                <img src="images/reports.png" alt="گزارشات فروش رستوران">
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <button class="slider-dot active" onclick="goToSlide(0)"></button>
+                <button class="slider-dot" onclick="goToSlide(1)"></button>
+                <button class="slider-dot" onclick="goToSlide(2)"></button>
+            </div>
+        </div>
+        <!-- SLIDER END -->
+
     </div>
 </div>
 </div>
@@ -1103,10 +1160,12 @@ footer{
 </div>
 
 <script>
+// ── NAVBAR SCROLL ──
 window.addEventListener('scroll',()=>{
     document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
 });
 
+// ── SCROLL REVEAL ──
 const revealEls=document.querySelectorAll('.reveal');
 const observer=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -1115,6 +1174,40 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:0.15,rootMargin:'0px 0px -50px 0px'});
 revealEls.forEach(el=>observer.observe(el));
 
+// ── IMAGE SLIDER ──
+const track = document.getElementById('sliderTrack');
+const dots = document.querySelectorAll('.slider-dot');
+const totalSlides = 3;
+let currentSlide = 0;
+let slideInterval;
+
+function updateSlider() {
+    // حرکت ترک به چپ (چون RTL است، برای رفتن به عکس بعدی باید منفی بدهیم)
+    track.style.transform = `translateX(${currentSlide * 100}%)`;
+    
+    // آپدیت دات‌ها
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateSlider();
+    // ریست تایمر اگر کاربر دستی کلیک کرد
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 4000);
+}
+
+// شروع اسلاید اتوماتیک هر ۴ ثانیه
+slideInterval = setInterval(nextSlide, 4000);
+
+// ── MODAL ──
 function openContact(){
     document.getElementById('contactModal').classList.add('show');
     document.body.style.overflow='hidden';
