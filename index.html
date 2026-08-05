@@ -6,820 +6,238 @@
 <title>اتوماسیون رستوران و کافه</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-
-body{
-    font-family:'Vazirmatn',sans-serif;
-    background:#020617;
-    color:white;
-    overflow-x:hidden;
-}
-
-::selection{
-    background:rgba(249,115,22,.3);
-    color:white;
-}
-
+body{font-family:'Vazirmatn',sans-serif;background:#020617;color:white;overflow-x:hidden}
+::selection{background:rgba(249,115,22,.3);color:white}
 .container{width:min(1200px,90%);margin:auto}
 section{padding:120px 0}
 
-/* ── NAVBAR ── */
-.navbar{
-    position:fixed;
-    top:0;left:0;right:0;
-    z-index:100;
-    padding:18px 0;
-    transition:.4s;
-    background:transparent;
-}
-
-.navbar.scrolled{
-    background:rgba(2,6,23,.85);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(255,255,255,.06);
-    padding:12px 0;
-}
-
-.navbar .container{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:1.3rem;
-    font-weight:800;
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.logo-icon{
-    width:38px;height:38px;
-    background:linear-gradient(135deg,#f97316,#fb923c);
-    border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.1rem;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:35px;
-    list-style:none;
-}
-
-.nav-links a{
-    color:#94a3b8;
-    text-decoration:none;
-    font-size:.95rem;
-    font-weight:500;
-    transition:.3s;
-}
-
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:.4s;background:transparent}
+.navbar.scrolled{background:rgba(2,6,23,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:12px 0}
+.navbar .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none;color:white}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#f97316,#fb923c);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff}
+.nav-links{display:flex;align-items:center;gap:35px;list-style:none}
+.nav-links a{color:#94a3b8;text-decoration:none;font-size:.95rem;font-weight:500;transition:.3s}
 .nav-links a:hover{color:white}
+.nav-cta{padding:10px 22px!important;background:#f97316!important;color:white!important;border-radius:999px;font-weight:700!important;box-shadow:0 4px 20px rgba(249,115,22,.3);text-decoration:none}
+.nav-cta:hover{background:#ea580c!important;transform:translateY(-2px)}
+.mobile-toggle{display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer}
 
-.nav-cta{
-    padding:10px 22px!important;
-    background:#f97316!important;
-    color:white!important;
-    border-radius:999px;
-    font-weight:700!important;
-    box-shadow:0 4px 20px rgba(249,115,22,.3);
-}
-
-.nav-cta:hover{
-    background:#ea580c!important;
-    transform:translateY(-2px);
-}
-
-.mobile-toggle{
-    display:none;
-    background:none;
-    border:none;
-    color:white;
-    font-size:1.5rem;
-    cursor:pointer;
-}
-
-/* ── HERO ── */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    padding-top:100px;
-    background:
-        radial-gradient(ellipse 80% 60% at top right,rgba(59,130,246,.15),transparent),
-        radial-gradient(ellipse 60% 50% at bottom left,rgba(249,115,22,.12),transparent),
-        #020617;
-    position:relative;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-    background-size:60px 60px;
-    mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent);
-    -webkit-mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent);
-}
-
-.hero-content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-    position:relative;
-    z-index:1;
-}
-
-.hero-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:rgba(249,115,22,.1);
-    border:1px solid rgba(249,115,22,.25);
-    color:#fb923c;
-    padding:8px 18px;
-    border-radius:999px;
-    font-size:.85rem;
-    font-weight:500;
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-size:3.8rem;
-    line-height:1.25;
-    margin-bottom:25px;
-    font-weight:900;
-}
-
-.hero h1 .gradient{
-    background:linear-gradient(135deg,#f97316,#fbbf24);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-}
-
-.hero p{
-    font-size:1.15rem;
-    color:#94a3b8;
-    margin-bottom:40px;
-    line-height:1.9;
-    max-width:500px;
-}
-
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent);-webkit-mask-image:radial-gradient(ellipse 70% 60% at center,black,transparent)}
+.hero-glow-1{position:absolute;width:500px;height:500px;background:rgba(249,115,22,.08);filter:blur(150px);border-radius:50%;top:-100px;right:-100px;animation:glowDrift 12s ease-in-out infinite alternate}
+.hero-glow-2{position:absolute;width:400px;height:400px;background:rgba(59,130,246,.06);filter:blur(120px);border-radius:50%;bottom:-50px;left:-100px;animation:glowDrift 15s ease-in-out infinite alternate-reverse}
+@keyframes glowDrift{0%{transform:translate(0,0)}100%{transform:translate(40px,-30px)}}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#fb923c;padding:8px 18px;border-radius:999px;font-size:.85rem;font-weight:500;margin-bottom:25px}
+.hero h1{font-size:3.6rem;line-height:1.25;margin-bottom:25px;font-weight:900}
+.hero h1 .gradient{background:linear-gradient(135deg,#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.1rem;color:#94a3b8;margin-bottom:40px;line-height:2;max-width:500px}
 .buttons{display:flex;gap:15px;flex-wrap:wrap}
+.btn{padding:15px 30px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:.3s;font-size:.95rem;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#f97316,#ea580c);color:white;box-shadow:0 10px 40px rgba(249,115,22,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(249,115,22,.45)}
+.btn-secondary{border:1px solid rgba(255,255,255,.12);color:white;background:rgba(255,255,255,.04)}
+.btn-secondary:hover{background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.btn-demo{background:linear-gradient(135deg,#22c55e,#16a34a);color:white;box-shadow:0 10px 40px rgba(34,197,94,.3)}
+.btn-demo:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(34,197,94,.4)}
 
-.btn{
-    padding:15px 30px;
-    border-radius:999px;
-    text-decoration:none;
-    font-weight:700;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    cursor:pointer;
-    transition:.3s;
-    font-size:.95rem;
-    border:none;
-    font-family:inherit;
-}
+/* Hero Right - Floating Cards */
+.hero-visual{position:relative;height:480px}
+.float-card{position:absolute;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;backdrop-filter:blur(20px);padding:20px;animation:floatCard 6s ease-in-out infinite}
+.float-card-1{top:20px;right:0;width:280px;animation-delay:0s}
+.float-card-2{top:180px;left:0;width:260px;animation-delay:2s}
+.float-card-3{bottom:0;right:40px;width:300px;animation-delay:4s}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.fc-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.fc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.fc-dot.green{background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.4)}
+.fc-dot.orange{background:#f97316;box-shadow:0 0 8px rgba(249,115,22,.4)}
+.fc-dot.blue{background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,.4)}
+.fc-title{font-size:.85rem;font-weight:700}
+.fc-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.8rem}
+.fc-row:last-child{border-bottom:none}
+.fc-row span:first-child{color:#94a3b8}
+.fc-row span:last-child{font-weight:700}
+.fc-row .price{color:#f97316}
+.fc-row .status{font-size:.75rem;padding:3px 10px;border-radius:99px}
+.fc-row .status.st-pending{background:rgba(249,115,22,.15);color:#fb923c}
+.fc-row .status.st-done{background:rgba(34,197,94,.15);color:#22c55e}
+.fc-row .status.st-prep{background:rgba(59,130,246,.15);color:#60a5fa}
+.fc-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:12px;overflow:hidden}
+.fc-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#f97316,#fbbf24);width:0%;animation:barGrow 2s ease-out .5s forwards}
+@keyframes barGrow{to{width:72%}}
 
-.btn-primary{
-    background:linear-gradient(135deg,#f97316,#ea580c);
-    color:white;
-    box-shadow:0 10px 40px rgba(249,115,22,.35);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 50px rgba(249,115,22,.45);
-}
-
-.btn-secondary{
-    border:1px solid rgba(255,255,255,.12);
-    color:white;
-    background:rgba(255,255,255,.04);
-}
-
-.btn-secondary:hover{
-    background:rgba(255,255,255,.08);
-    transform:translateY(-3px);
-}
-
-.hero-mockup{position:relative}
-
-.mockup-glow{
-    position:absolute;
-    width:300px;height:300px;
-    background:rgba(249,115,22,.15);
-    filter:blur(100px);
-    border-radius:50%;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    z-index:0;
-}
-
-.mockup{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    backdrop-filter:blur(20px);
-    padding:12px;
-    position:relative;
-    z-index:1;
-    overflow: hidden;
-}
-
-/* ── SLIDER STYLES ── */
-.slider-wrapper{
-    position:relative;
-    width:100%;
-    border-radius:16px;
-    overflow:hidden;
-}
-
-.slider-track{
-    display:flex;
-    transition:transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.slider-track img{
-    width:100%;
-    flex-shrink:0;
-    border-radius:16px;
-    display:block;
-    object-fit:cover;
-}
-
-.slider-dots{
-    position:absolute;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:8px;
-    z-index:2;
-}
-
-.slider-dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:rgba(255,255,255,.4);
-    cursor:pointer;
-    transition:.3s;
-    border:none;
-}
-
-.slider-dot.active{
-    background:#f97316;
-    box-shadow:0 0 10px rgba(249,115,22,.5);
-    transform:scale(1.2);
-}
-
-/* ── STATS ── */
+/* STATS */
 .stats{padding:0}
-
-.stats .container{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:0;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:24px;
-    overflow:hidden;
-}
-
-.stat-item{
-    padding:40px 30px;
-    text-align:center;
-    position:relative;
-}
-
-.stat-item:not(:last-child)::after{
-    content:'';
-    position:absolute;
-    left:0;top:20%;bottom:20%;
-    width:1px;
-    background:rgba(255,255,255,.08);
-}
-
-.stat-number{
-    font-size:2.5rem;
-    font-weight:900;
-    background:linear-gradient(135deg,#f97316,#fbbf24);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-}
-
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;overflow:hidden}
+.stat-item{padding:40px 30px;text-align:center;position:relative}
+.stat-item:not(:last-child)::after{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.08)}
+.stat-number{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{color:#64748b;font-size:.9rem;margin-top:6px}
 
-/* ── SECTION HEADERS ── */
-.section-title{
-    text-align:center;
-    font-size:2.8rem;
-    font-weight:900;
-    margin-bottom:18px;
-}
+/* SECTION HEADERS */
+.section-title{text-align:center;font-size:2.8rem;font-weight:900;margin-bottom:18px}
+.section-subtitle{text-align:center;color:#64748b;max-width:620px;margin:0 auto 60px;line-height:2}
 
-.section-subtitle{
-    text-align:center;
-    color:#64748b;
-    max-width:600px;
-    margin:0 auto 60px;
-    line-height:1.9;
-}
-
-/* ── FEATURES ── */
-.features-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.card{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:24px;
-    padding:35px 28px;
-    transition:.4s cubic-bezier(.4,0,.2,1);
-    position:relative;
-    overflow:hidden;
-}
-
-.card::before{
-    content:'';
-    position:absolute;
-    top:0;right:0;
-    width:120px;height:120px;
-    background:radial-gradient(circle,rgba(249,115,22,.08),transparent 70%);
-    opacity:0;
-    transition:.4s;
-}
-
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:35px 28px;transition:.4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(249,115,22,.08),transparent 70%);opacity:0;transition:.4s}
 .card:hover::before{opacity:1}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(249,115,22,.2);
-    background:rgba(255,255,255,.05);
-}
-
-.card-icon{
-    width:56px;height:56px;
-    background:rgba(249,115,22,.1);
-    border:1px solid rgba(249,115,22,.15);
-    border-radius:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:20px;
-    color:#f97316;
-    font-size:1.4rem;
-}
-
+.card:hover{transform:translateY(-8px);border-color:rgba(249,115,22,.2);background:rgba(255,255,255,.05)}
+.card-icon{width:56px;height:56px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.15);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#f97316;font-size:1.4rem}
 .card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px}
 .card p{color:#64748b;font-size:.9rem;line-height:1.8}
 
-/* ── DASHBOARD PREVIEW ── */
-.dashboard-section{
-    background:
-        radial-gradient(ellipse 60% 50% at center,rgba(59,130,246,.08),transparent),
-        transparent;
-}
+/* LIVE DEMO SECTION */
+.demo-section{background:radial-gradient(ellipse 60% 50% at center,rgba(34,197,94,.06),transparent)}
+.demo-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.demo-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;overflow:hidden;transition:.4s;position:relative}
+.demo-card:hover{transform:translateY(-8px);border-color:rgba(249,115,22,.2)}
+.demo-card-glow{position:absolute;top:-50%;right:-30%;width:200px;height:200px;filter:blur(80px);border-radius:50%;pointer-events:none}
+.demo-card-glow.orange{background:rgba(249,115,22,.12)}
+.demo-card-glow.blue{background:rgba(59,130,246,.12)}
+.demo-card-preview{height:220px;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.05)}
+.demo-card-preview .preview-icon{font-size:3.5rem;opacity:.15;position:absolute}
+.demo-mini-ui{position:relative;z-index:1;width:85%;max-width:340px}
+.mini-header{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.mini-dot{width:8px;height:8px;border-radius:50%}
+.mini-dot.r{background:#ef4444}.mini-dot.y{background:#eab308}.mini-dot.g{background:#22c55e}
+.mini-url{flex:1;background:rgba(255,255,255,.06);padding:5px 12px;border-radius:6px;font-size:.7rem;color:#64748b;direction:ltr;text-align:left}
+.mini-body{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-block{background:rgba(255,255,255,.05);border-radius:8px;padding:12px}
+.mini-block-label{font-size:.65rem;color:#64748b;margin-bottom:4px}
+.mini-block-val{font-size:1rem;font-weight:800}
+.mini-block-sm{grid-column:1/-1;background:rgba(255,255,255,.05);border-radius:8px;padding:10px 12px}
+.mini-line{height:6px;background:rgba(255,255,255,.08);border-radius:3px;margin-bottom:6px}
+.mini-line:last-child{margin-bottom:0;width:70%}
+.demo-card-body{padding:28px;position:relative;z-index:1}
+.demo-card-body h3{font-size:1.3rem;font-weight:800;margin-bottom:10px}
+.demo-card-body p{color:#94a3b8;font-size:.92rem;line-height:1.9;margin-bottom:20px}
+.demo-card-body .btn{width:100%;justify-content:center}
+.demo-card-features{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.demo-card-features span{background:rgba(255,255,255,.05);color:#94a3b8;padding:5px 14px;border-radius:99px;font-size:.78rem;display:flex;align-items:center;gap:5px}
+.demo-card-features span i{font-size:.7rem;color:#22c55e}
 
-.dash-preview{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:24px;
-    overflow:hidden;
-}
+/* BENEFITS */
+.benefits-section{background:radial-gradient(ellipse 60% 50% at bottom left,rgba(249,115,22,.06),transparent)}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.benefit{display:flex;gap:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:28px;transition:.4s}
+.benefit:hover{transform:translateY(-4px);border-color:rgba(249,115,22,.15)}
+.benefit-icon{width:52px;height:52px;min-width:52px;background:rgba(249,115,22,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#f97316;font-size:1.3rem}
+.benefit h4{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.benefit p{color:#64748b;font-size:.88rem;line-height:1.8}
 
-.dash-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 24px;
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.dash-header-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
+/* DASHBOARD PREVIEW */
+.dashboard-section{background:radial-gradient(ellipse 60% 50% at center,rgba(59,130,246,.08),transparent)}
+.dash-preview{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;overflow:hidden}
+.dash-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.06)}
+.dash-header-right{display:flex;align-items:center;gap:10px}
 .dash-dots{display:flex;gap:6px}
-
-.dash-dots span{
-    width:12px;height:12px;
-    border-radius:50%;
-}
-
+.dash-dots span{width:12px;height:12px;border-radius:50%}
 .dash-dots span:nth-child(1){background:#ef4444}
 .dash-dots span:nth-child(2){background:#eab308}
 .dash-dots span:nth-child(3){background:#22c55e}
-
-.dash-url{
-    background:rgba(255,255,255,.06);
-    padding:6px 16px;
-    border-radius:8px;
-    font-size:.8rem;
-    color:#64748b;
-    direction:ltr;
-}
-
-.dash-body{
-    display:grid;
-    grid-template-columns:200px 1fr;
-    min-height:400px;
-}
-
-.dash-sidebar{
-    border-left:1px solid rgba(255,255,255,.06);
-    padding:20px 16px;
-}
-
-.dash-sidebar-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 12px;
-    border-radius:10px;
-    font-size:.85rem;
-    color:#64748b;
-    margin-bottom:4px;
-    cursor:default;
-    transition:.2s;
-}
-
-.dash-sidebar-item.active{
-    background:rgba(249,115,22,.1);
-    color:#f97316;
-}
-
-.dash-sidebar-item:hover:not(.active){
-    background:rgba(255,255,255,.04);
-    color:#cbd5e1;
-}
-
-.dash-main{
-    padding:24px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:auto 1fr;
-    gap:16px;
-}
-
-.dash-stat{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:14px;
-    padding:18px;
-}
-
+.dash-url{background:rgba(255,255,255,.06);padding:6px 16px;border-radius:8px;font-size:.8rem;color:#64748b;direction:ltr}
+.dash-body{display:grid;grid-template-columns:200px 1fr;min-height:400px}
+.dash-sidebar{border-left:1px solid rgba(255,255,255,.06);padding:20px 16px}
+.dash-sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.85rem;color:#64748b;margin-bottom:4px;cursor:default;transition:.2s}
+.dash-sidebar-item.active{background:rgba(249,115,22,.1);color:#f97316}
+.dash-sidebar-item:hover:not(.active){background:rgba(255,255,255,.04);color:#cbd5e1}
+.dash-main{padding:24px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr;gap:16px}
+.dash-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:18px}
 .dash-stat-label{font-size:.75rem;color:#64748b;margin-bottom:8px}
 .dash-stat-value{font-size:1.5rem;font-weight:800}
-
-.dash-stat-change{
-    font-size:.75rem;
-    margin-top:4px;
-    display:flex;
-    align-items:center;
-    gap:4px;
-}
-
+.dash-stat-change{font-size:.75rem;margin-top:4px;display:flex;align-items:center;gap:4px}
 .dash-stat-change.up{color:#22c55e}
 .dash-stat-change.down{color:#ef4444}
-
-.dash-chart{
-    grid-column:1/-1;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:14px;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-}
-
-.dash-chart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
+.dash-chart{grid-column:1/-1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:20px;display:flex;flex-direction:column}
+.dash-chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .dash-chart-title{font-size:.9rem;font-weight:700}
-
-.dash-chart-legend{
-    display:flex;gap:16px;font-size:.75rem;color:#64748b;
-}
-
-.dash-chart-legend span::before{
-    content:'';
-    display:inline-block;
-    width:8px;height:8px;
-    border-radius:50%;
-    margin-left:6px;
-}
-
+.dash-chart-legend{display:flex;gap:16px;font-size:.75rem;color:#64748b}
+.dash-chart-legend span::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:6px}
 .dash-chart-legend .leg-1::before{background:#f97316}
 .dash-chart-legend .leg-2::before{background:#3b82f6}
-
-.chart-bars{
-    flex:1;
-    display:flex;
-    align-items:flex-end;
-    gap:12px;
-    padding-top:10px;
-}
-
-.chart-bar-group{
-    flex:1;
-    display:flex;
-    align-items:flex-end;
-    gap:4px;
-    height:100%;
-}
-
-.chart-bar{
-    flex:1;
-    border-radius:6px 6px 2px 2px;
-    min-height:8px;
-    transition:.6s;
-}
-
+.chart-bars{flex:1;display:flex;align-items:flex-end;gap:12px;padding-top:10px}
+.chart-bar-group{flex:1;display:flex;align-items:flex-end;gap:4px;height:100%}
+.chart-bar{flex:1;border-radius:6px 6px 2px 2px;min-height:8px;transition:.6s}
 .chart-bar.orange{background:linear-gradient(to top,#ea580c,#fb923c)}
 .chart-bar.blue{background:linear-gradient(to top,#2563eb,#60a5fa)}
+.chart-labels{display:flex;gap:12px;margin-top:10px}
+.chart-labels span{flex:1;text-align:center;font-size:.7rem;color:#475569}
 
-.chart-labels{
-    display:flex;
-    gap:12px;
-    margin-top:10px;
-}
-
-.chart-labels span{
-    flex:1;
-    text-align:center;
-    font-size:.7rem;
-    color:#475569;
-}
-
-/* ── SCREENS ── */
-.screens-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-}
-
-.screen{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:24px;
-    overflow:hidden;
-    transition:.4s;
-}
-
-.screen:hover{
-    transform:translateY(-8px);
-    border-color:rgba(249,115,22,.15);
-}
-
-.screen-img{
-    width:100%;
-    aspect-ratio:4/3;
-    object-fit:cover;
-    display:block;
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.screen-body{padding:24px}
-
-.screen-body h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
-.screen-body p{color:#64748b;font-size:.9rem;line-height:1.7}
-
-.screen-tags{
-    display:flex;
-    gap:8px;
-    margin-top:14px;
-    flex-wrap:wrap;
-}
-
-.screen-tags span{
-    background:rgba(249,115,22,.08);
-    color:#fb923c;
-    padding:4px 12px;
-    border-radius:999px;
-    font-size:.75rem;
-}
-
-/* ── TESTIMONIAL ── */
-.testimonial-card{
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-    position:relative;
-}
-
-.testimonial-card .quote-icon{
-    font-size:3rem;
-    color:rgba(249,115,22,.2);
-    margin-bottom:20px;
-    line-height:1;
-}
-
-.testimonial-text{
-    font-size:1.2rem;
-    color:#cbd5e1;
-    line-height:2;
-    margin-bottom:30px;
-}
-
-.testimonial-author{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-}
-
-.testimonial-avatar{
-    width:50px;height:50px;
-    background:linear-gradient(135deg,#f97316,#fbbf24);
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;
-    font-size:1.1rem;
-}
-
+/* TESTIMONIAL */
+.testimonial-card{max-width:700px;margin:auto;text-align:center;position:relative}
+.testimonial-card .quote-icon{font-size:3rem;color:rgba(249,115,22,.2);margin-bottom:20px;line-height:1}
+.testimonial-text{font-size:1.2rem;color:#cbd5e1;line-height:2;margin-bottom:30px}
+.testimonial-author{display:flex;align-items:center;justify-content:center;gap:14px}
+.testimonial-avatar{width:50px;height:50px;background:linear-gradient(135deg,#f97316,#fbbf24);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem}
 .testimonial-info h4{font-size:1rem;font-weight:700}
 .testimonial-info p{font-size:.85rem;color:#64748b}
 
-/* ── CTA ── */
-.cta{
-    text-align:center;
-    padding:100px 40px;
-    border-radius:32px;
-    background:
-        linear-gradient(135deg,rgba(249,115,22,.15),rgba(59,130,246,.1));
-    border:1px solid rgba(249,115,22,.1);
-    position:relative;
-    overflow:hidden;
-}
-
-.cta::before{
-    content:'';
-    position:absolute;
-    width:400px;height:400px;
-    background:rgba(249,115,22,.1);
-    filter:blur(120px);
-    border-radius:50%;
-    top:-200px;right:-100px;
-}
-
+/* CTA */
+.cta{text-align:center;padding:100px 40px;border-radius:32px;background:linear-gradient(135deg,rgba(249,115,22,.15),rgba(59,130,246,.1));border:1px solid rgba(249,115,22,.1);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;width:400px;height:400px;background:rgba(249,115,22,.1);filter:blur(120px);border-radius:50%;top:-200px;right:-100px}
 .cta h2{font-size:2.5rem;font-weight:900;margin-bottom:15px;position:relative}
 .cta p{color:#94a3b8;margin-bottom:35px;font-size:1.1rem;position:relative}
 
-/* ── MODAL ── */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    backdrop-filter:blur(10px);
-    z-index:999;
-}
-
-.modal.show{
-    display:flex;
-    animation:fadeIn .3s;
-}
-
-.modal-box{
-    background:#0f172a;
-    padding:40px;
-    border-radius:24px;
-    width:min(440px,90%);
-    text-align:center;
-    border:1px solid rgba(255,255,255,.08);
-    animation:slideUp .4s cubic-bezier(.4,0,.2,1);
-}
-
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;backdrop-filter:blur(10px);z-index:999}
+.modal.show{display:flex;animation:fadeIn .3s}
+.modal-box{background:#0f172a;padding:40px;border-radius:24px;width:min(440px,90%);text-align:center;border:1px solid rgba(255,255,255,.08);animation:slideUp .4s cubic-bezier(.4,0,.2,1)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-
 .modal-box h2{font-size:1.5rem;font-weight:800;margin-bottom:8px}
 .modal-box>p{color:#64748b;font-size:.9rem;margin-bottom:10px}
-
-.modal-phone{
-    direction:ltr;
-    font-size:1.3rem;
-    font-weight:800;
-    color:#f97316;
-    margin-bottom:6px;
-    letter-spacing:1px;
-}
-
-.modal-name{
-    color:#cbd5e1;
-    font-size:1rem;
-    font-weight:500;
-    margin-bottom:25px;
-}
-
-.modal-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.modal-buttons .btn{
-    justify-content:center;
-    font-size:.95rem;
-    padding:14px 24px;
-}
-
-.modal-btn-icon{
-    font-size:1.1rem;
-    width:24px;
-    text-align:center;
-}
-
-.close-btn{
-    margin-top:20px;
-    background:none;
-    border:none;
-    color:#475569;
-    cursor:pointer;
-    font-family:inherit;
-    font-size:.9rem;
-    transition:.2s;
-}
-
+.modal-phone{direction:ltr;font-size:1.3rem;font-weight:800;color:#f97316;margin-bottom:6px;letter-spacing:1px}
+.modal-name{color:#cbd5e1;font-size:1rem;font-weight:500;margin-bottom:25px}
+.modal-buttons{display:flex;flex-direction:column;gap:10px}
+.modal-buttons .btn{justify-content:center;font-size:.95rem;padding:14px 24px}
+.modal-btn-icon{font-size:1.1rem;width:24px;text-align:center}
+.close-btn{margin-top:20px;background:none;border:none;color:#475569;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
 .close-btn:hover{color:white}
 
-/* ── FOOTER ── */
-footer{
-    padding:50px 0;
-    text-align:center;
-    color:#334155;
-    font-size:.85rem;
-    border-top:1px solid rgba(255,255,255,.04);
-}
+/* FOOTER */
+footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-top:1px solid rgba(255,255,255,.04)}
 
-/* ── SCROLL ANIMATIONS ── */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:.8s cubic-bezier(.4,0,.2,1);
-}
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
 .reveal-delay-4{transition-delay:.4s}
 .reveal-delay-5{transition-delay:.5s}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:1024px){
     .features-grid{grid-template-columns:repeat(2,1fr)}
-    .screens-grid{grid-template-columns:repeat(2,1fr)}
-    .screens-grid .screen:last-child{grid-column:1/-1;max-width:400px;margin:auto;width:100%}
     .dash-body{grid-template-columns:1fr}
     .dash-sidebar{display:none}
     .stats .container{grid-template-columns:repeat(2,1fr)}
     .stat-item:nth-child(2)::after{display:none}
+    .benefits-grid{grid-template-columns:1fr}
 }
-
 @media(max-width:768px){
     .nav-links{display:none}
     .mobile-toggle{display:block}
     .hero-content{grid-template-columns:1fr;gap:40px;text-align:center}
-    .hero h1{font-size:2.5rem}
+    .hero h1{font-size:2.4rem}
     .hero p{margin:0 auto 35px}
     .buttons{justify-content:center}
-    .hero-mockup{max-width:500px;margin:auto}
+    .hero-visual{display:none}
     .section-title{font-size:2rem}
     .features-grid{grid-template-columns:1fr}
-    .screens-grid{grid-template-columns:1fr}
-    .screens-grid .screen:last-child{max-width:none}
+    .demo-cards{grid-template-columns:1fr}
     .dash-main{grid-template-columns:1fr}
     .stats .container{grid-template-columns:1fr}
     .stat-item::after{display:none!important}
@@ -827,6 +245,7 @@ footer{
     .stat-item:last-child{border-bottom:none}
     .cta{padding:60px 24px}
     .cta h2{font-size:1.8rem}
+    .benefits-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -836,58 +255,79 @@ footer{
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
 <div class="container">
-    <div class="logo">
-        <div class="logo-icon">☰</div>
-        رستوران‌پلاس
-    </div>
+    <a href="#" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-utensils"></i></div>
+        کافه‌پلاس
+    </a>
     <ul class="nav-links">
         <li><a href="#features">امکانات</a></li>
+        <li><a href="#demo">نمونه کار</a></li>
+        <li><a href="#benefits">مزایا</a></li>
         <li><a href="#dashboard">داشبورد</a></li>
-        <li><a href="#screens">نمایش</a></li>
         <li><a href="#review">نظرات</a></li>
         <li><a onclick="openContact()" class="nav-cta" style="cursor:pointer">مشاوره رایگان</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="openContact()">☰</button>
+    <button class="mobile-toggle" onclick="openContact()"><i class="fa-solid fa-bars"></i></button>
 </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+<div class="hero-glow-1"></div>
+<div class="hero-glow-2"></div>
 <div class="container">
 <div class="hero-content">
 <div>
-    <div class="hero-badge reveal">✨ نسخه جدید ۲۰۲۶ منتشر شد</div>
+    <div class="hero-badge reveal"><i class="fa-solid fa-bolt" style="font-size:.8rem"></i> دمو زنده — همین الان تست کنید</div>
     <h1 class="reveal reveal-delay-1">
-        مدیریت هوشمند<br>
-        <span class="gradient">رستوران و کافه</span>
+        سفارشات خود را<br>
+        <span class="gradient">برخط مشاهده کنید</span>
     </h1>
     <p class="reveal reveal-delay-2">
-        ثبت سفارش، صندوق فروش، حسابداری، مدیریت انبار و گزارش‌گیری دقیق — همه در یک سیستم یکپارچه و مدرن.
+        سرعت بیشتر، هزینه و استهلاک کمتر، راحتی مشتری و مدیریت هوشمند — سیستم منوی دیجیتال و مانیتورینگ لحظه‌ای سفارشات برای کافه و رستوران
     </p>
     <div class="buttons reveal reveal-delay-3">
-        <a href="#features" class="btn btn-primary">مشاهده امکانات ←</a>
-        <a onclick="openContact()" class="btn btn-secondary" style="cursor:pointer">📞 درخواست مشاوره</a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
+            <i class="fa-solid fa-eye"></i> مشاهده نمونه منو
+        </a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary">
+            <i class="fa-solid fa-gauge-high"></i> پنل مدیریت
+        </a>
+        <a onclick="openContact()" class="btn btn-secondary" style="cursor:pointer">
+            <i class="fa-solid fa-phone"></i> مشاوره رایگان
+        </a>
     </div>
 </div>
-<div class="hero-mockup reveal reveal-delay-4">
-    <div class="mockup-glow"></div>
-    <div class="mockup">
-        
-        <!-- SLIDER START -->
-        <div class="slider-wrapper">
-            <div class="slider-track" id="sliderTrack">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=375&fit=crop&auto=format" alt="داشبورد سیستم مدیریت رستوران">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=375&fit=crop&auto=format" alt="منوی موبایل رستوران">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=375&fit=crop&auto=format" alt="گزارشات فروش رستوران">
-            </div>
-            <div class="slider-dots" id="sliderDots">
-                <button class="slider-dot active" onclick="goToSlide(0)"></button>
-                <button class="slider-dot" onclick="goToSlide(1)"></button>
-                <button class="slider-dot" onclick="goToSlide(2)"></button>
-            </div>
+<div class="hero-visual reveal reveal-delay-4">
+    <!-- کارت شناور ۱: سفارش جدید -->
+    <div class="float-card float-card-1">
+        <div class="fc-header">
+            <span class="fc-dot orange"></span>
+            <span class="fc-title">سفارش جدید — میز ۵</span>
         </div>
-        <!-- SLIDER END -->
-
+        <div class="fc-row"><span>لاته ×۲</span><span class="price">۱۵۰,۰۰۰</span></div>
+        <div class="fc-row"><span>تیرامیسو ×۱</span><span class="price">۱۲۰,۰۰۰</span></div>
+        <div class="fc-row"><span>وضعیت</span><span class="status st-pending">در انتظار تایید</span></div>
+    </div>
+    <!-- کارت شناور ۲: آماده‌سازی -->
+    <div class="float-card float-card-2">
+        <div class="fc-header">
+            <span class="fc-dot blue"></span>
+            <span class="fc-title">در حال آماده‌سازی</span>
+        </div>
+        <div class="fc-row"><span>میز ۳ — ۳ آیتم</span><span class="price">۲۸۵,۰۰۰</span></div>
+        <div class="fc-row"><span>میز ۸ — ۲ آیتم</span><span class="price">۱۶۰,۰۰۰</span></div>
+        <div class="fc-bar"><div class="fc-bar-fill"></div></div>
+    </div>
+    <!-- کارت شناور ۳: تکمیل شده -->
+    <div class="float-card float-card-3">
+        <div class="fc-header">
+            <span class="fc-dot green"></span>
+            <span class="fc-title">سفارشات تکمیل شده امروز</span>
+        </div>
+        <div class="fc-row"><span>تعداد رسید</span><span>۲۴</span></div>
+        <div class="fc-row"><span>جمع فروش</span><span class="price" style="color:#22c55e">۳,۸۵۰,۰۰۰</span></div>
+        <div class="fc-row"><span>میانگین هر سفارش</span><span>۱۶۰,۰۰۰</span></div>
     </div>
 </div>
 </div>
@@ -898,20 +338,20 @@ footer{
 <section class="stats">
 <div class="container">
     <div class="stat-item reveal">
-        <div class="stat-number">۱۲۰+</div>
-        <div class="stat-label">رستوران فعال</div>
+        <div class="stat-number">۴۰٪</div>
+        <div class="stat-label">افزایش سرعت سرویس</div>
     </div>
     <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-number">۵۰۰K</div>
-        <div class="stat-label">سفارش ثبت‌شده</div>
+        <div class="stat-number">۶۰٪</div>
+        <div class="stat-label">کاهش اشتباهات سفارش</div>
     </div>
     <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-number">۹۹.۹٪</div>
-        <div class="stat-label">آپتایم سرور</div>
+        <div class="stat-number">صفر</div>
+        <div class="stat-label">هزینه چاپ منو کاغذی</div>
     </div>
     <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-number">۴.۹⭐</div>
-        <div class="stat-label">رضایت مشتریان</div>
+        <div class="stat-number">۲۴/۷</div>
+        <div class="stat-label">مانیتورینگ برخط</div>
     </div>
 </div>
 </section>
@@ -923,34 +363,180 @@ footer{
     <p class="section-subtitle reveal reveal-delay-1">مدیریت کامل رستوران از لحظه ثبت سفارش تا تحلیل گزارش فروش روزانه</p>
     <div class="features-grid">
         <div class="card reveal">
-            <div class="card-icon">📋</div>
-            <h3>ثبت سفارش سریع</h3>
-            <p>ثبت سفارش با چند لمس، ارسال مستقیم به آشپزخانه و بارهابار بدون اتلاف وقت</p>
+            <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
+            <h3>منوی QR دیجیتال</h3>
+            <p>مشتری با اسکن QR منو را می‌بیند و مستقیماً سفارش می‌دهد — بدون نیاز به گارسون و منوی کاغذی</p>
         </div>
         <div class="card reveal reveal-delay-1">
-            <div class="card-icon">💰</div>
-            <h3>صندوق فروش</h3>
-            <p>پشتیبانی از پرداخت نقدی، کارتخوان، کیف پول و تقسیط با تسویه خودکار</p>
+            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>ثبت آنی سفارش</h3>
+            <p>سفارش مشتری فوراً در پنل مدیریت ظاهر می‌شود — بدون تاخیر و بدون اشتباه</p>
         </div>
         <div class="card reveal reveal-delay-2">
-            <div class="card-icon">📦</div>
-            <h3>مدیریت انبار</h3>
-            <p>هشدار کمبود موجودی، ارتباط خودکار با سفارشات و مدیریت ورود و خروج کالا</p>
+            <div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+            <h3>مانیتورینگ لحظه‌ای</h3>
+            <p>سفارشات جدید، در حال آماده‌سازی و تکمیل شده — همه را به صورت زنده ببینید</p>
         </div>
         <div class="card reveal reveal-delay-1">
-            <div class="card-icon">📊</div>
-            <h3>حسابداری مالی</h3>
-            <p>محاسبه خودکار سود و زیان، هزینه‌های جاری و گزارش مالی لحظه‌ای</p>
+            <div class="card-icon"><i class="fa-solid fa-receipt"></i></div>
+            <h3>صدور خودکار رسید</h3>
+            <p>با تکمیل سفارش، رسید دیجیتال صادر می‌شود — قابلیت پرینت و آرشیو</p>
         </div>
         <div class="card reveal reveal-delay-2">
-            <div class="card-icon">📈</div>
+            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
             <h3>گزارش فروش</h3>
-            <p>نمودارهای تحلیلی فروش ساعتی، روزانه و ماهانه با مقایسه دوره‌های مختلف</p>
+            <p>نمودارهای تحلیلی فروش، پرفروش‌ترین‌ها و جمع درآمد روزانه در یک نگاه</p>
         </div>
         <div class="card reveal reveal-delay-3">
-            <div class="card-icon">📱</div>
-            <h3>منوی QR دیجیتال</h3>
-            <p>مشتریان با اسکن QR منو را ببینند و مستقیماً سفارش دهند بدون نیاز به منو کاغذی</p>
+            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>سازگار با همه دستگاه‌ها</h3>
+            <p>از موبایل مشتری تا تبلت گارسون و لپ‌تاپ مدیر — کاملاً ریسپانسیو</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- LIVE DEMO -->
+<section id="demo" class="demo-section">
+<div class="container">
+    <h2 class="section-title reveal">نمونه کار زنده</h2>
+    <p class="section-subtitle reveal reveal-delay-1">همین الان وارد شوید و سیستم را عملی تست کنید — سفارش بدهید و در پنل مدیریت ببینید</p>
+    <div class="demo-cards">
+        <!-- کارت دمو منو -->
+        <div class="demo-card reveal">
+            <div class="demo-card-glow orange"></div>
+            <div class="demo-card-preview">
+                <div class="preview-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                <div class="mini-ui">
+                    <div class="mini-header">
+                        <span class="mini-dot r"></span>
+                        <span class="mini-dot y"></span>
+                        <span class="mini-dot g"></span>
+                        <div class="mini-url">cafe-demo...vercel.app</div>
+                    </div>
+                    <div class="mini-body">
+                        <div class="mini-block">
+                            <div class="mini-block-label">میز</div>
+                            <div class="mini-block-val">۵</div>
+                        </div>
+                        <div class="mini-block">
+                            <div class="mini-block-label">جمع</div>
+                            <div class="mini-block-val" style="color:#f97316">۲۷۰K</div>
+                        </div>
+                        <div class="mini-block-sm">
+                            <div class="mini-line" style="width:100%"></div>
+                            <div class="mini-line" style="width:85%"></div>
+                            <div class="mini-line" style="width:60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-card-body">
+                <h3>منوی دیجیتال مشتری</h3>
+                <p>صفحه‌ای که مشتری می‌بیند — انتخاب میز، مرور منو، افزودن آیتم‌ها و ثبت سفارش با چند لمس</p>
+                <div class="demo-card-features">
+                    <span><i class="fa-solid fa-check"></i> فارسی و راست‌چین</span>
+                    <span><i class="fa-solid fa-check"></i> ریسپانسیو</span>
+                    <span><i class="fa-solid fa-check"></i> اتصال برخط</span>
+                </div>
+                <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
+                    <i class="fa-solid fa-arrow-left"></i> ورود به نمونه منو
+                </a>
+            </div>
+        </div>
+        <!-- کارت دمو پنل مدیریت -->
+        <div class="demo-card reveal reveal-delay-2">
+            <div class="demo-card-glow blue"></div>
+            <div class="demo-card-preview">
+                <div class="preview-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <div class="mini-ui">
+                    <div class="mini-header">
+                        <span class="mini-dot r"></span>
+                        <span class="mini-dot y"></span>
+                        <span class="mini-dot g"></span>
+                        <div class="mini-url">cafe-demo...vercel.app/admin</div>
+                    </div>
+                    <div class="mini-body">
+                        <div class="mini-block">
+                            <div class="mini-block-label">سفارشات جدید</div>
+                            <div class="mini-block-val" style="color:#f97316">۳</div>
+                        </div>
+                        <div class="mini-block">
+                            <div class="mini-block-label">جمع فروش</div>
+                            <div class="mini-block-val" style="color:#22c55e">۳.۸M</div>
+                        </div>
+                        <div class="mini-block-sm">
+                            <div class="mini-line" style="width:90%"></div>
+                            <div class="mini-line" style="width:70%"></div>
+                            <div class="mini-line" style="width:50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-card-body">
+                <h3>پنل مدیریت و مانیتورینگ</h3>
+                <p>سفارشات جدید، تایید، آماده‌سازی، صدور رسید و مشاهده تمام فاکتورها — به صورت لحظه‌ای و برخط</p>
+                <div class="demo-card-features">
+                    <span><i class="fa-solid fa-check"></i> بروزرسانی زنده</span>
+                    <span><i class="fa-solid fa-check"></i> صدای اعلان</span>
+                    <span><i class="fa-solid fa-check"></i> رسید دیجیتال</span>
+                </div>
+                <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-arrow-left"></i> ورود به پنل مدیریت
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" class="benefits-section">
+<div class="container">
+    <h2 class="section-title reveal">چرا کافه‌پلاس؟</h2>
+    <p class="section-subtitle reveal reveal-delay-1">تفاوت واقعی سیستم دیجیتال با روش سنتی — اعداد صحبت می‌کنند</p>
+    <div class="benefits-grid">
+        <div class="benefit reveal">
+            <div class="benefit-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div>
+                <h4>سرعت ۴۰ درصد بیشتر</h4>
+                <p>حذف مراحل واسطه: مشتری مستقیم سفارش می‌دهد، نیازی به منتظر ماندن برای گارسون نیست</p>
+            </div>
+        </div>
+        <div class="benefit reveal reveal-delay-1">
+            <div class="benefit-icon"><i class="fa-solid fa-coins"></i></div>
+            <div>
+                <h4>هزینه و استهلاک کمتر</h4>
+                <p>بدون هزینه چاپ منو، بدون دفترچه سفارش، بدون اشتباه محاسبه — صرفه‌جویی مستمر</p>
+            </div>
+        </div>
+        <div class="benefit reveal reveal-delay-2">
+            <div class="benefit-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div>
+                <h4>راحتی بیشتر مشتری</h4>
+                <p>مشتری در آرامش منو را مرور می‌کند، بدون عجله و فشار — تجربه خرید بهتر، رضایت بیشتر</p>
+            </div>
+        </div>
+        <div class="benefit reveal reveal-delay-3">
+            <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <h4>حذف اشتباهات انسانی</h4>
+                <p>دیگر سفارش اشتباهی ثبت نمی‌شود — مشتری خودش انتخاب می‌کند، محاسبه خودکار است</p>
+            </div>
+        </div>
+        <div class="benefit reveal reveal-delay-4">
+            <div class="benefit-icon"><i class="fa-solid fa-eye"></i></div>
+            <div>
+                <h4>مشاهده برخط سفارشات</h4>
+                <p>مدیر از هر جایی حتی خارج از رستوران می‌تواند وضعیت سفارشات را لحظه‌ای ببیند</p>
+            </div>
+        </div>
+        <div class="benefit reveal reveal-delay-5">
+            <div class="benefit-icon"><i class="fa-solid fa-database"></i></div>
+            <div>
+                <h4>آرشیو خودکار</h4>
+                <p>تمام سفارشات و رسیدها در فضای ابری ذخیره می‌شوند — هر زمان که بخواهید قابل دسترسی‌اند</p>
+            </div>
         </div>
     </div>
 </div>
@@ -960,39 +546,37 @@ footer{
 <section id="dashboard" class="dashboard-section">
 <div class="container">
     <h2 class="section-title reveal">داشبورد مدیریتی</h2>
-    <p class="section-subtitle reveal reveal-delay-1">کنترل کامل کسب‌وکار در یک نگاه</p>
+    <p class="section-subtitle reveal reveal-delay-1">کنترل کامل کسب‌وکار در یک نگاه — بدون نیاز به نصب نرم‌افزار</p>
     <div class="dash-preview reveal reveal-delay-2">
         <div class="dash-header">
             <div class="dash-header-right">
                 <div class="dash-dots"><span></span><span></span><span></span></div>
-                <div class="dash-url">app.restaurantplus.ir/dashboard</div>
+                <div class="dash-url">cafe-demo.vercel.app/admin</div>
             </div>
         </div>
         <div class="dash-body">
             <div class="dash-sidebar">
-                <div class="dash-sidebar-item active">📊 داشبورد</div>
-                <div class="dash-sidebar-item">📋 سفارشات</div>
-                <div class="dash-sidebar-item">🍽️ منو</div>
-                <div class="dash-sidebar-item">📦 انبار</div>
-                <div class="dash-sidebar-item">👥 مشتریان</div>
-                <div class="dash-sidebar-item">💰 صندوق</div>
-                <div class="dash-sidebar-item">📈 گزارشات</div>
-                <div class="dash-sidebar-item">⚙️ تنظیمات</div>
+                <div class="dash-sidebar-item active"><i class="fa-solid fa-gauge-high" style="margin-left:8px;font-size:.8rem"></i> داشبورد</div>
+                <div class="dash-sidebar-item"><i class="fa-solid fa-bell" style="margin-left:8px;font-size:.8rem"></i> سفارشات جدید</div>
+                <div class="dash-sidebar-item"><i class="fa-solid fa-fire-burner" style="margin-left:8px;font-size:.8rem"></i> آماده‌سازی</div>
+                <div class="dash-sidebar-item"><i class="fa-solid fa-receipt" style="margin-left:8px;font-size:.8rem"></i> رسیدها</div>
+                <div class="dash-sidebar-item"><i class="fa-solid fa-chart-pie" style="margin-left:8px;font-size:.8rem"></i> گزارشات</div>
+                <div class="dash-sidebar-item"><i class="fa-solid fa-gear" style="margin-left:8px;font-size:.8rem"></i> تنظیمات</div>
             </div>
             <div class="dash-main">
                 <div class="dash-stat">
                     <div class="dash-stat-label">فروش امروز</div>
-                    <div class="dash-stat-value" style="color:#f97316">۱۲.۸ M</div>
+                    <div class="dash-stat-value" style="color:#f97316">۳.۸ M</div>
                     <div class="dash-stat-change up">↑ ۱۸٪ نسبت به دیروز</div>
                 </div>
                 <div class="dash-stat">
                     <div class="dash-stat-label">سفارشات</div>
-                    <div class="dash-stat-value">۸۷</div>
+                    <div class="dash-stat-value">۲۴</div>
                     <div class="dash-stat-change up">↑ ۱۲٪</div>
                 </div>
                 <div class="dash-stat">
                     <div class="dash-stat-label">میانگین سفارش</div>
-                    <div class="dash-stat-value">۱۴۷ K</div>
+                    <div class="dash-stat-value">۱۵۸ K</div>
                     <div class="dash-stat-change down">↓ ۳٪</div>
                 </div>
                 <div class="dash-chart">
@@ -1004,83 +588,17 @@ footer{
                         </div>
                     </div>
                     <div class="chart-bars">
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:45%"></div>
-                            <div class="chart-bar blue" style="height:35%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:60%"></div>
-                            <div class="chart-bar blue" style="height:50%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:75%"></div>
-                            <div class="chart-bar blue" style="height:55%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:50%"></div>
-                            <div class="chart-bar blue" style="height:65%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:85%"></div>
-                            <div class="chart-bar blue" style="height:60%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:95%"></div>
-                            <div class="chart-bar blue" style="height:70%"></div>
-                        </div>
-                        <div class="chart-bar-group">
-                            <div class="chart-bar orange" style="height:70%"></div>
-                            <div class="chart-bar blue" style="height:45%"></div>
-                        </div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:45%"></div><div class="chart-bar blue" style="height:35%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:60%"></div><div class="chart-bar blue" style="height:50%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:75%"></div><div class="chart-bar blue" style="height:55%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:50%"></div><div class="chart-bar blue" style="height:65%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:85%"></div><div class="chart-bar blue" style="height:60%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:95%"></div><div class="chart-bar blue" style="height:70%"></div></div>
+                        <div class="chart-bar-group"><div class="chart-bar orange" style="height:70%"></div><div class="chart-bar blue" style="height:45%"></div></div>
                     </div>
                     <div class="chart-labels">
                         <span>شنبه</span><span>یک</span><span>دو</span><span>سه</span><span>چهار</span><span>پنج</span><span>جمعه</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- SCREENS -->
-<section id="screens">
-<div class="container">
-    <h2 class="section-title reveal">نمایی از سیستم</h2>
-    <p class="section-subtitle reveal reveal-delay-1">رابط کاربری ساده، حرفه‌ای و پاسخگو</p>
-    <div class="screens-grid">
-        <div class="screen reveal">
-            <img class="screen-img" src="images/mobile-menu.png" alt="منوی دیجیتال رستوران">
-            <div class="screen-body">
-                <h3>منوی دیجیتال مشتری</h3>
-                <p>مشتری با اسکن QR منو را مشاهده و سفارش خود را ثبت می‌کند</p>
-                <div class="screen-tags">
-                    <span>ریسپانسیو</span>
-                    <span>فارسی</span>
-                    <span>سریع</span>
-                </div>
-            </div>
-        </div>
-        <div class="screen reveal reveal-delay-1">
-            <img class="screen-img" src="images/dashboard.png" alt="صفحه صندوق و گارسون">
-            <div class="screen-body">
-                <h3>صفحه گارسون و صندوق</h3>
-                <p>ثبت سریع سفارش، تقسیم صورت‌حساب و مدیریت میزها</p>
-                <div class="screen-tags">
-                    <span>تاچ‌فرندلی</span>
-                    <span>آفلاین</span>
-                </div>
-            </div>
-        </div>
-        <div class="screen reveal reveal-delay-2">
-            <img class="screen-img"  src="images/reports.png" alt="گزارشات و تحلیل فروش">
-            <div class="screen-body">
-                <h3>گزارشات و تحلیل</h3>
-                <p>نمودارهای فروش، پرفروش‌ترین‌ها و تحلیل سودآوری</p>
-                <div class="screen-tags">
-                    <span>اکسپورت</span>
-                    <span>PDF</span>
-                    <span>اکسل</span>
                 </div>
             </div>
         </div>
@@ -1095,13 +613,13 @@ footer{
         <div class="quote-icon">❝</div>
         <p class="testimonial-text">
             بعد از استفاده از این سیستم، سرعت سرویس‌دهی ما ۴۰ درصد افزایش پیدا کرد.
-            دیگه نیازی به دفترچه سفارش و محاسبه دستی نداریم. همه چیز خودکاره!
+            دیگه نیازی به دفترچه سفارش و محاسبه دستی نداریم. مشتری‌ها هم عاشقش شدن — خیلی راحت‌تر سفارش می‌دن!
         </p>
         <div class="testimonial-author">
             <div class="testimonial-avatar">م</div>
             <div class="testimonial-info">
                 <h4>محمد رضایی</h4>
-                <p>مدیر رستوران گل‌ها — تهران</p>
+                <p>مدیر کافه گل‌ها — تهران</p>
             </div>
         </div>
     </div>
@@ -1114,9 +632,14 @@ footer{
 <div class="cta reveal">
     <h2>آماده ارتقای کسب‌وکارتان هستید؟</h2>
     <p>همین الان مشاوره رایگان بگیرید و تفاوت را حس کنید</p>
-    <a onclick="openContact()" class="btn btn-primary" style="cursor:pointer;position:relative">
-        🚀 شروع رایگان
-    </a>
+    <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;position:relative">
+        <a onclick="openContact()" class="btn btn-primary" style="cursor:pointer">
+            <i class="fa-solid fa-rocket"></i> شروع رایگان
+        </a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
+            <i class="fa-solid fa-eye"></i> تست دمو زنده
+        </a>
+    </div>
 </div>
 </div>
 </section>
@@ -1124,7 +647,7 @@ footer{
 <!-- FOOTER -->
 <footer>
 <div class="container">
-    <p>© ۲۰۲۶ رستوران‌پلاس — طراحی و توسعه توسط <span style="color:#94a3b8">ارسلان</span></p>
+    <p>© ۲۰۲۵ کافه‌پلاس — طراحی و توسعه توسط <span style="color:#94a3b8">ارسلان</span></p>
 </div>
 </footer>
 
@@ -1136,92 +659,31 @@ footer{
     <div class="modal-phone">0935-141-7807</div>
     <div class="modal-name">ارسلان</div>
     <div class="modal-buttons">
-        <a href="tel:09351417807" class="btn btn-primary">
-            <span class="modal-btn-icon">📞</span> تماس مستقیم
-        </a>
-        <a href="sms:09351417807?body=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary">
-            <span class="modal-btn-icon">💬</span> ارسال پیامک
-        </a>
-        <a href="https://t.me/+989351417807" class="btn btn-secondary" target="_blank">
-            <span class="modal-btn-icon">✈️</span> تلگرام
-        </a>
-        <a href="https://wa.me/989351417807?text=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary" target="_blank">
-            <span class="modal-btn-icon">💚</span> واتساپ
-        </a>
-        <a href="https://ble.ir/09351417807" class="btn btn-secondary" target="_blank">
-            <span class="modal-btn-icon">🔵</span> بله
-        </a>
-        <a href="https://rubika.ir/+989351417807" class="btn btn-secondary" target="_blank">
-            <span class="modal-btn-icon">🟣</span> روبیکا
-        </a>
+        <a href="tel:09351417807" class="btn btn-primary"><span class="modal-btn-icon"><i class="fa-solid fa-phone"></i></span> تماس مستقیم</a>
+        <a href="sms:09351417807?body=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary"><span class="modal-btn-icon"><i class="fa-solid fa-comment-sms"></i></span> ارسال پیامک</a>
+        <a href="https://t.me/+989351417807" class="btn btn-secondary" target="_blank"><span class="modal-btn-icon"><i class="fa-brands fa-telegram"></i></span> تلگرام</a>
+        <a href="https://wa.me/989351417807?text=سلام، برای مشاوره اتوماسیون رستوران پیام می‌دهم" class="btn btn-secondary" target="_blank"><span class="modal-btn-icon"><i class="fa-brands fa-whatsapp"></i></span> واتساپ</a>
+        <a href="https://ble.ir/09351417807" class="btn btn-secondary" target="_blank"><span class="modal-btn-icon"><i class="fa-solid fa-message"></i></span> بله</a>
+        <a href="https://rubika.ir/+989351417807" class="btn btn-secondary" target="_blank"><span class="modal-btn-icon"><i class="fa-solid fa-paper-plane"></i></span> روبیکا</a>
     </div>
     <button class="close-btn" onclick="closeContact()">بستن ✕</button>
 </div>
 </div>
 
 <script>
-// ── NAVBAR SCROLL ──
-window.addEventListener('scroll',()=>{
-    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
-});
+// NAVBAR SCROLL
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 
-// ── SCROLL REVEAL ──
+// SCROLL REVEAL
 const revealEls=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('visible');
-    });
-},{threshold:0.15,rootMargin:'0px 0px -50px 0px'});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
 revealEls.forEach(el=>observer.observe(el));
 
-// ── IMAGE SLIDER ──
-const track = document.getElementById('sliderTrack');
-const dots = document.querySelectorAll('.slider-dot');
-const totalSlides = 3;
-let currentSlide = 0;
-let slideInterval;
-
-function updateSlider() {
-    // حرکت ترک به چپ (چون RTL است، برای رفتن به عکس بعدی باید منفی بدهیم)
-    track.style.transform = `translateX(${currentSlide * 100}%)`;
-    
-    // آپدیت دات‌ها
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlider();
-}
-
-function goToSlide(index) {
-    currentSlide = index;
-    updateSlider();
-    // ریست تایمر اگر کاربر دستی کلیک کرد
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 4000);
-}
-
-// شروع اسلاید اتوماتیک هر ۴ ثانیه
-slideInterval = setInterval(nextSlide, 4000);
-
-// ── MODAL ──
-function openContact(){
-    document.getElementById('contactModal').classList.add('show');
-    document.body.style.overflow='hidden';
-}
-function closeContact(){
-    document.getElementById('contactModal').classList.remove('show');
-    document.body.style.overflow='';
-}
-document.getElementById('contactModal').addEventListener('click',function(e){
-    if(e.target===this) closeContact();
-});
-document.addEventListener('keydown',function(e){
-    if(e.key==='Escape') closeContact();
-});
+// MODAL
+function openContact(){document.getElementById('contactModal').classList.add('show');document.body.style.overflow='hidden'}
+function closeContact(){document.getElementById('contactModal').classList.remove('show');document.body.style.overflow=''}
+document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeContact()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContact()});
 </script>
 
 </body>
