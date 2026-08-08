@@ -98,7 +98,7 @@ section{padding:120px 0}
 .card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px}
 .card p{color:#64748b;font-size:.9rem;line-height:1.8}
 
-/* LIVE DEMO SECTION */
+/* LIVE DEMO */
 .demo-section{background:radial-gradient(ellipse 60% 50% at center,rgba(34,197,94,.06),transparent)}
 .demo-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .demo-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;overflow:hidden;transition:.4s;position:relative}
@@ -108,7 +108,7 @@ section{padding:120px 0}
 .demo-card-glow.blue{background:rgba(59,130,246,.12)}
 .demo-card-preview{height:220px;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.05)}
 .demo-card-preview .preview-icon{font-size:3.5rem;opacity:.15;position:absolute}
-.demo-mini-ui{position:relative;z-index:1;width:85%;max-width:340px}
+.mini-ui{position:relative;z-index:1;width:85%;max-width:340px}
 .mini-header{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .mini-dot{width:8px;height:8px;border-radius:50%}
 .mini-dot.r{background:#ef4444}.mini-dot.y{background:#eab308}.mini-dot.g{background:#22c55e}
@@ -136,6 +136,87 @@ section{padding:120px 0}
 .benefit-icon{width:52px;height:52px;min-width:52px;background:rgba(249,115,22,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#f97316;font-size:1.3rem}
 .benefit h4{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 .benefit p{color:#64748b;font-size:.88rem;line-height:1.8}
+
+/* =================== PRICING =================== */
+.pricing-section{position:relative}
+.pricing-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(249,115,22,.06),transparent 70%);pointer-events:none}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:1}
+
+.plan-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:32px 24px;transition:.4s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.plan-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;opacity:0;transition:.4s}
+.plan-card:hover{transform:translateY(-8px)}
+.plan-card:hover::before{opacity:1}
+
+.plan-card.plan-free:hover{border-color:rgba(59,130,246,.25)}
+.plan-card.plan-free::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+
+.plan-card.plan-online:hover{border-color:rgba(168,85,247,.25)}
+.plan-card.plan-online::before{background:linear-gradient(90deg,#a855f7,#c084fc)}
+
+.plan-card.plan-full:hover{border-color:rgba(249,115,22,.25)}
+.plan-card.plan-full::before{background:linear-gradient(90deg,#f97316,#fbbf24)}
+
+.plan-card.plan-offline{border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.03)}
+.plan-card.plan-offline:hover{border-color:rgba(239,68,68,.4)}
+.plan-card.plan-offline::before{background:linear-gradient(90deg,#ef4444,#f87171)}
+
+.plan-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;margin-bottom:18px}
+.plan-badge.blue{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.plan-badge.purple{background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)}
+.plan-badge.orange{background:rgba(249,115,22,.12);color:#fb923c;border:1px solid rgba(249,115,22,.2)}
+.plan-badge.red{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+
+.plan-name{font-size:1.15rem;font-weight:800;margin-bottom:6px}
+.plan-desc{font-size:.82rem;color:#64748b;line-height:1.8;margin-bottom:20px;min-height:60px}
+
+.plan-price-wrap{margin-bottom:24px}
+.plan-price{font-size:2rem;font-weight:900;line-height:1}
+.plan-price.free-price{color:#60a5fa}
+.plan-price.online-price{color:#c084fc}
+.plan-price.full-price{color:#fb923c}
+.plan-price.offline-price{color:#f87171}
+.plan-price small{font-size:.85rem;font-weight:400;color:#64748b;margin-right:4px}
+.plan-monthly{font-size:.8rem;color:#475569;margin-top:6px}
+.plan-monthly del{color:#475569;margin-left:4px}
+.plan-monthly span{color:#94a3b8}
+
+.plan-features{list-style:none;margin-bottom:28px;flex:1}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:.85rem;color:#94a3b8;border-bottom:1px solid rgba(255,255,255,.03)}
+.plan-features li:last-child{border-bottom:none}
+.plan-features li i{margin-top:4px;font-size:.7rem;flex-shrink:0}
+.plan-features li i.fa-check{color:#22c55e}
+.plan-features li i.fa-xmark{color:#475569}
+
+.plan-btn{width:100%;justify-content:center;padding:14px 20px;border-radius:12px;font-size:.9rem}
+.plan-btn.blue{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.plan-btn.blue:hover{background:rgba(59,130,246,.2)}
+.plan-btn.purple{background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)}
+.plan-btn.purple:hover{background:rgba(168,85,247,.2)}
+.plan-btn.orange{background:linear-gradient(135deg,#f97316,#ea580c);color:white;border:none;box-shadow:0 6px 24px rgba(249,115,22,.3)}
+.plan-btn.orange:hover{box-shadow:0 10px 30px rgba(249,115,22,.4);transform:translateY(-2px)}
+.plan-btn.red{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.plan-btn.red:hover{background:rgba(239,68,68,.2)}
+
+/* اشتراک شامل */
+.includes-bar{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:32px;margin-top:50px;display:flex;flex-wrap:wrap;justify-content:center;gap:24px 40px;position:relative;z-index:1}
+.includes-item{display:flex;align-items:center;gap:10px;font-size:.92rem;color:#94a3b8}
+.includes-item i{color:#22c55e;font-size:.85rem}
+.includes-item strong{color:#cbd5e1;font-weight:600}
+
+/* توضیح طرح آفلاین */
+.offline-explain{background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:24px;padding:40px;margin-top:40px;position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start}
+.offline-explain-icon{width:72px;height:72px;min-width:72px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#f87171}
+.offline-explain h3{font-size:1.3rem;font-weight:800;margin-bottom:12px;color:#f87171}
+.offline-explain p{color:#94a3b8;font-size:.92rem;line-height:2.2;margin-bottom:16px}
+.offline-explain ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.offline-explain ul li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:#cbd5e1}
+.offline-explain ul li i{color:#f87171;font-size:.75rem;flex-shrink:0}
+
+/* ارتقا */
+.upgrade-note{text-align:center;margin-top:40px;position:relative;z-index:1}
+.upgrade-note p{color:#64748b;font-size:.95rem;line-height:2}
+.upgrade-note strong{color:#fb923c}
 
 /* DASHBOARD PREVIEW */
 .dashboard-section{background:radial-gradient(ellipse 60% 50% at center,rgba(59,130,246,.08),transparent)}
@@ -169,7 +250,7 @@ section{padding:120px 0}
 .dash-chart-legend .leg-2::before{background:#3b82f6}
 .chart-bars{flex:1;display:flex;align-items:flex-end;gap:12px;padding-top:10px}
 .chart-bar-group{flex:1;display:flex;align-items:flex-end;gap:4px;height:100%}
-.chart-bar{flex:1;border-radius:6px 6px 2px 2px;min-height:8px;transition:.6s}
+.chart-bar{flex:1;border-radius:6px 6px 2px 2px;min-height:8px}
 .chart-bar.orange{background:linear-gradient(to top,#ea580c,#fb923c)}
 .chart-bar.blue{background:linear-gradient(to top,#2563eb,#60a5fa)}
 .chart-labels{display:flex;gap:12px;margin-top:10px}
@@ -219,6 +300,11 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 .reveal-delay-5{transition-delay:.5s}
 
 /* RESPONSIVE */
+@media(max-width:1100px){
+    .pricing-grid{grid-template-columns:repeat(2,1fr)}
+    .offline-explain{grid-template-columns:1fr}
+    .offline-explain ul{grid-template-columns:1fr}
+}
 @media(max-width:1024px){
     .features-grid{grid-template-columns:repeat(2,1fr)}
     .dash-body{grid-template-columns:1fr}
@@ -246,6 +332,8 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     .cta{padding:60px 24px}
     .cta h2{font-size:1.8rem}
     .benefits-grid{grid-template-columns:1fr}
+    .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+    .includes-bar{flex-direction:column;gap:14px;align-items:center}
 }
 </style>
 </head>
@@ -262,6 +350,7 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     <ul class="nav-links">
         <li><a href="#features">امکانات</a></li>
         <li><a href="#demo">نمونه کار</a></li>
+        <li><a href="#pricing">طرح‌ها</a></li>
         <li><a href="#benefits">مزایا</a></li>
         <li><a href="#dashboard">داشبورد</a></li>
         <li><a href="#review">نظرات</a></li>
@@ -287,44 +376,26 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
         سرعت بیشتر، هزینه و استهلاک کمتر، راحتی مشتری و مدیریت هوشمند — سیستم منوی دیجیتال و مانیتورینگ لحظه‌ای سفارشات برای کافه و رستوران
     </p>
     <div class="buttons reveal reveal-delay-3">
-        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
-            <i class="fa-solid fa-eye"></i> مشاهده نمونه منو
-        </a>
-        <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary">
-            <i class="fa-solid fa-gauge-high"></i> پنل مدیریت
-        </a>
-        <a onclick="openContact()" class="btn btn-secondary" style="cursor:pointer">
-            <i class="fa-solid fa-phone"></i> مشاوره رایگان
-        </a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo"><i class="fa-solid fa-eye"></i> مشاهده نمونه منو</a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary"><i class="fa-solid fa-gauge-high"></i> پنل مدیریت</a>
+        <a onclick="openContact()" class="btn btn-secondary" style="cursor:pointer"><i class="fa-solid fa-phone"></i> مشاوره رایگان</a>
     </div>
 </div>
 <div class="hero-visual reveal reveal-delay-4">
-    <!-- کارت شناور ۱: سفارش جدید -->
     <div class="float-card float-card-1">
-        <div class="fc-header">
-            <span class="fc-dot orange"></span>
-            <span class="fc-title">سفارش جدید — میز ۵</span>
-        </div>
+        <div class="fc-header"><span class="fc-dot orange"></span><span class="fc-title">سفارش جدید — میز ۵</span></div>
         <div class="fc-row"><span>لاته ×۲</span><span class="price">۱۵۰,۰۰۰</span></div>
         <div class="fc-row"><span>تیرامیسو ×۱</span><span class="price">۱۲۰,۰۰۰</span></div>
         <div class="fc-row"><span>وضعیت</span><span class="status st-pending">در انتظار تایید</span></div>
     </div>
-    <!-- کارت شناور ۲: آماده‌سازی -->
     <div class="float-card float-card-2">
-        <div class="fc-header">
-            <span class="fc-dot blue"></span>
-            <span class="fc-title">در حال آماده‌سازی</span>
-        </div>
+        <div class="fc-header"><span class="fc-dot blue"></span><span class="fc-title">در حال آماده‌سازی</span></div>
         <div class="fc-row"><span>میز ۳ — ۳ آیتم</span><span class="price">۲۸۵,۰۰۰</span></div>
         <div class="fc-row"><span>میز ۸ — ۲ آیتم</span><span class="price">۱۶۰,۰۰۰</span></div>
         <div class="fc-bar"><div class="fc-bar-fill"></div></div>
     </div>
-    <!-- کارت شناور ۳: تکمیل شده -->
     <div class="float-card float-card-3">
-        <div class="fc-header">
-            <span class="fc-dot green"></span>
-            <span class="fc-title">سفارشات تکمیل شده امروز</span>
-        </div>
+        <div class="fc-header"><span class="fc-dot green"></span><span class="fc-title">سفارشات تکمیل شده امروز</span></div>
         <div class="fc-row"><span>تعداد رسید</span><span>۲۴</span></div>
         <div class="fc-row"><span>جمع فروش</span><span class="price" style="color:#22c55e">۳,۸۵۰,۰۰۰</span></div>
         <div class="fc-row"><span>میانگین هر سفارش</span><span>۱۶۰,۰۰۰</span></div>
@@ -337,22 +408,10 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 <!-- STATS -->
 <section class="stats">
 <div class="container">
-    <div class="stat-item reveal">
-        <div class="stat-number">۴۰٪</div>
-        <div class="stat-label">افزایش سرعت سرویس</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-number">۶۰٪</div>
-        <div class="stat-label">کاهش اشتباهات سفارش</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-number">صفر</div>
-        <div class="stat-label">هزینه چاپ منو کاغذی</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-number">۲۴/۷</div>
-        <div class="stat-label">مانیتورینگ برخط</div>
-    </div>
+    <div class="stat-item reveal"><div class="stat-number">۴۰٪</div><div class="stat-label">افزایش سرعت سرویس</div></div>
+    <div class="stat-item reveal reveal-delay-1"><div class="stat-number">۶۰٪</div><div class="stat-label">کاهش اشتباهات سفارش</div></div>
+    <div class="stat-item reveal reveal-delay-2"><div class="stat-number">صفر</div><div class="stat-label">هزینه چاپ منو کاغذی</div></div>
+    <div class="stat-item reveal reveal-delay-3"><div class="stat-number">۲۴/۷</div><div class="stat-label">مانیتورینگ برخط</div></div>
 </div>
 </section>
 
@@ -362,36 +421,12 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     <h2 class="section-title reveal">همه چیز در یک سیستم</h2>
     <p class="section-subtitle reveal reveal-delay-1">مدیریت کامل رستوران از لحظه ثبت سفارش تا تحلیل گزارش فروش روزانه</p>
     <div class="features-grid">
-        <div class="card reveal">
-            <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
-            <h3>منوی QR دیجیتال</h3>
-            <p>مشتری با اسکن QR منو را می‌بیند و مستقیماً سفارش می‌دهد — بدون نیاز به گارسون و منوی کاغذی</p>
-        </div>
-        <div class="card reveal reveal-delay-1">
-            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-            <h3>ثبت آنی سفارش</h3>
-            <p>سفارش مشتری فوراً در پنل مدیریت ظاهر می‌شود — بدون تاخیر و بدون اشتباه</p>
-        </div>
-        <div class="card reveal reveal-delay-2">
-            <div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-            <h3>مانیتورینگ لحظه‌ای</h3>
-            <p>سفارشات جدید، در حال آماده‌سازی و تکمیل شده — همه را به صورت زنده ببینید</p>
-        </div>
-        <div class="card reveal reveal-delay-1">
-            <div class="card-icon"><i class="fa-solid fa-receipt"></i></div>
-            <h3>صدور خودکار رسید</h3>
-            <p>با تکمیل سفارش، رسید دیجیتال صادر می‌شود — قابلیت پرینت و آرشیو</p>
-        </div>
-        <div class="card reveal reveal-delay-2">
-            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>گزارش فروش</h3>
-            <p>نمودارهای تحلیلی فروش، پرفروش‌ترین‌ها و جمع درآمد روزانه در یک نگاه</p>
-        </div>
-        <div class="card reveal reveal-delay-3">
-            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3>سازگار با همه دستگاه‌ها</h3>
-            <p>از موبایل مشتری تا تبلت گارسون و لپ‌تاپ مدیر — کاملاً ریسپانسیو</p>
-        </div>
+        <div class="card reveal"><div class="card-icon"><i class="fa-solid fa-qrcode"></i></div><h3>منوی QR دیجیتال</h3><p>مشتری با اسکن QR منو را می‌بیند و مستقیماً سفارش می‌دهد — بدون نیاز به گارسون و منوی کاغذی</p></div>
+        <div class="card reveal reveal-delay-1"><div class="card-icon"><i class="fa-solid fa-bolt"></i></div><h3>ثبت آنی سفارش</h3><p>سفارش مشتری فوراً در پنل مدیریت ظاهر می‌شود — بدون تاخیر و بدون اشتباه</p></div>
+        <div class="card reveal reveal-delay-2"><div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div><h3>مانیتورینگ لحظه‌ای</h3><p>سفارشات جدید، در حال آماده‌سازی و تکمیل شده — همه را به صورت زنده ببینید</p></div>
+        <div class="card reveal reveal-delay-1"><div class="card-icon"><i class="fa-solid fa-receipt"></i></div><h3>صدور خودکار رسید</h3><p>با تکمیل سفارش، رسید دیجیتال صادر می‌شود — قابلیت پرینت و آرشیو</p></div>
+        <div class="card reveal reveal-delay-2"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h3>گزارش فروش</h3><p>نمودارهای تحلیلی فروش، پرفروش‌ترین‌ها و جمع درآمد روزانه در یک نگاه</p></div>
+        <div class="card reveal reveal-delay-3"><div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div><h3>سازگار با همه دستگاه‌ها</h3><p>از موبایل مشتری تا تبلت گارسون و لپ‌تاپ مدیر — کاملاً ریسپانسیو</p></div>
     </div>
 </div>
 </section>
@@ -402,90 +437,160 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     <h2 class="section-title reveal">نمونه کار زنده</h2>
     <p class="section-subtitle reveal reveal-delay-1">همین الان وارد شوید و سیستم را عملی تست کنید — سفارش بدهید و در پنل مدیریت ببینید</p>
     <div class="demo-cards">
-        <!-- کارت دمو منو -->
         <div class="demo-card reveal">
             <div class="demo-card-glow orange"></div>
-            <div class="demo-card-preview">
-                <div class="preview-icon"><i class="fa-solid fa-mug-saucer"></i></div>
-                <div class="mini-ui">
-                    <div class="mini-header">
-                        <span class="mini-dot r"></span>
-                        <span class="mini-dot y"></span>
-                        <span class="mini-dot g"></span>
-                        <div class="mini-url">cafe-demo...vercel.app</div>
-                    </div>
-                    <div class="mini-body">
-                        <div class="mini-block">
-                            <div class="mini-block-label">میز</div>
-                            <div class="mini-block-val">۵</div>
-                        </div>
-                        <div class="mini-block">
-                            <div class="mini-block-label">جمع</div>
-                            <div class="mini-block-val" style="color:#f97316">۲۷۰K</div>
-                        </div>
-                        <div class="mini-block-sm">
-                            <div class="mini-line" style="width:100%"></div>
-                            <div class="mini-line" style="width:85%"></div>
-                            <div class="mini-line" style="width:60%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="demo-card-preview"><div class="preview-icon"><i class="fa-solid fa-mug-saucer"></i></div><div class="mini-ui"><div class="mini-header"><span class="mini-dot r"></span><span class="mini-dot y"></span><span class="mini-dot g"></span><div class="mini-url">cafe-demo...vercel.app</div></div><div class="mini-body"><div class="mini-block"><div class="mini-block-label">میز</div><div class="mini-block-val">۵</div></div><div class="mini-block"><div class="mini-block-label">جمع</div><div class="mini-block-val" style="color:#f97316">۲۷۰K</div></div><div class="mini-block-sm"><div class="mini-line" style="width:100%"></div><div class="mini-line" style="width:85%"></div><div class="mini-line" style="width:60%"></div></div></div></div></div>
             <div class="demo-card-body">
                 <h3>منوی دیجیتال مشتری</h3>
                 <p>صفحه‌ای که مشتری می‌بیند — انتخاب میز، مرور منو، افزودن آیتم‌ها و ثبت سفارش با چند لمس</p>
-                <div class="demo-card-features">
-                    <span><i class="fa-solid fa-check"></i> فارسی و راست‌چین</span>
-                    <span><i class="fa-solid fa-check"></i> ریسپانسیو</span>
-                    <span><i class="fa-solid fa-check"></i> اتصال برخط</span>
-                </div>
-                <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
-                    <i class="fa-solid fa-arrow-left"></i> ورود به نمونه منو
-                </a>
+                <div class="demo-card-features"><span><i class="fa-solid fa-check"></i> فارسی و راست‌چین</span><span><i class="fa-solid fa-check"></i> ریسپانسیو</span><span><i class="fa-solid fa-check"></i> اتصال برخط</span></div>
+                <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo"><i class="fa-solid fa-arrow-left"></i> ورود به نمونه منو</a>
             </div>
         </div>
-        <!-- کارت دمو پنل مدیریت -->
         <div class="demo-card reveal reveal-delay-2">
             <div class="demo-card-glow blue"></div>
-            <div class="demo-card-preview">
-                <div class="preview-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                <div class="mini-ui">
-                    <div class="mini-header">
-                        <span class="mini-dot r"></span>
-                        <span class="mini-dot y"></span>
-                        <span class="mini-dot g"></span>
-                        <div class="mini-url">cafe-demo...vercel.app/admin</div>
-                    </div>
-                    <div class="mini-body">
-                        <div class="mini-block">
-                            <div class="mini-block-label">سفارشات جدید</div>
-                            <div class="mini-block-val" style="color:#f97316">۳</div>
-                        </div>
-                        <div class="mini-block">
-                            <div class="mini-block-label">جمع فروش</div>
-                            <div class="mini-block-val" style="color:#22c55e">۳.۸M</div>
-                        </div>
-                        <div class="mini-block-sm">
-                            <div class="mini-line" style="width:90%"></div>
-                            <div class="mini-line" style="width:70%"></div>
-                            <div class="mini-line" style="width:50%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="demo-card-preview"><div class="preview-icon"><i class="fa-solid fa-gauge-high"></i></div><div class="mini-ui"><div class="mini-header"><span class="mini-dot r"></span><span class="mini-dot y"></span><span class="mini-dot g"></span><div class="mini-url">cafe-demo...vercel.app/admin</div></div><div class="mini-body"><div class="mini-block"><div class="mini-block-label">سفارشات جدید</div><div class="mini-block-val" style="color:#f97316">۳</div></div><div class="mini-block"><div class="mini-block-label">جمع فروش</div><div class="mini-block-val" style="color:#22c55e">۳.۸M</div></div><div class="mini-block-sm"><div class="mini-line" style="width:90%"></div><div class="mini-line" style="width:70%"></div><div class="mini-line" style="width:50%"></div></div></div></div></div>
             <div class="demo-card-body">
                 <h3>پنل مدیریت و مانیتورینگ</h3>
                 <p>سفارشات جدید، تایید، آماده‌سازی، صدور رسید و مشاهده تمام فاکتورها — به صورت لحظه‌ای و برخط</p>
-                <div class="demo-card-features">
-                    <span><i class="fa-solid fa-check"></i> بروزرسانی زنده</span>
-                    <span><i class="fa-solid fa-check"></i> صدای اعلان</span>
-                    <span><i class="fa-solid fa-check"></i> رسید دیجیتال</span>
-                </div>
-                <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary">
-                    <i class="fa-solid fa-arrow-left"></i> ورود به پنل مدیریت
-                </a>
+                <div class="demo-card-features"><span><i class="fa-solid fa-check"></i> بروزرسانی زنده</span><span><i class="fa-solid fa-check"></i> صدای اعلان</span><span><i class="fa-solid fa-check"></i> رسید دیجیتال</span></div>
+                <a href="https://cafe-demo-gamma-seven.vercel.app/admin/" target="_blank" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> ورود به پنل مدیریت</a>
             </div>
         </div>
+    </div>
+</div>
+</section>
+
+<!-- =================== PRICING =================== -->
+<section id="pricing" class="pricing-section">
+<div class="container">
+    <h2 class="section-title reveal">طرح‌های اشتراک</h2>
+    <p class="section-subtitle reveal reveal-delay-1">هر کسب‌وکاری نیاز متفاوتی دارد — طرح مناسب خود را انتخاب کنید</p>
+
+    <div class="pricing-grid">
+        <!-- طرح ۱ -->
+        <div class="plan-card plan-free reveal">
+            <div class="plan-badge blue"><i class="fa-solid fa-circle" style="font-size:.5rem"></i> طرح ۱</div>
+            <div class="plan-name">منوی دیجیتال</div>
+            <div class="plan-desc">منوی آنلاین حرفه‌ای با QR کد اختصاصی</div>
+            <div class="plan-price-wrap">
+                <div class="plan-price free-price">1 ملیون </div>
+            </div>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> منوی دیجیتال با لینک اختصاصی</li>
+                <li><i class="fa-solid fa-check"></i> QR کد اختصاصی میزها</li>
+                <li><i class="fa-solid fa-check"></i> طراحی ریسپانسیو فارسی</li>
+                <li><i class="fa-solid fa-xmark"></i> بروزرسانی منو از پنل</li>
+                <li><i class="fa-solid fa-xmark"></i> ثبت سفارش آنلاین</li>
+                <li><i class="fa-solid fa-xmark"></i> پنل مدیریت سفارشات</li>
+                <li><i class="fa-solid fa-xmark"></i> گزارش فروش</li>
+            </ul>
+            <a onclick="openContact()" class="btn plan-btn blue" style="cursor:pointer"><i class="fa-solid fa-arrow-left"></i> شروع رایگان</a>
+        </div>
+
+        <!-- طرح ۲ -->
+        <div class="plan-card plan-online reveal reveal-delay-1">
+            <div class="plan-badge purple"><i class="fa-solid fa-circle" style="font-size:.5rem"></i> طرح ۲</div>
+            <div class="plan-name">سفارش آنلاین</div>
+            <div class="plan-desc">ثبت سفارش توسط مشتری و مشاهده در پنل</div>
+            <div class="plan-price-wrap">
+                <div class="plan-price online-price"><small>سالانه</small>۳ میلیون</div>
+                <div class="plan-monthly">۲۵۰ هزار <span>ماهانه</span></div>
+            </div>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> تمام امکانات طرح ۱</li>
+                <li><i class="fa-solid fa-check"></i> ثبت سفارش توسط مشتری</li>
+                <li><i class="fa-solid fa-check"></i> پنل مدیریت لحظه‌ای</li>
+                <li><i class="fa-solid fa-check"></i> تایید و آماده‌سازی سفارش</li>
+                <li><i class="fa-solid fa-check"></i> صدور رسید دیجیتال</li>
+                <li><i class="fa-solid fa-check"></i> اعلان صوتی سفارش جدید</li>
+                <li><i class="fa-solid fa-xmark"></i> گزارشات تحلیلی</li>
+            </ul>
+            <a onclick="openContact()" class="btn plan-btn purple" style="cursor:pointer"><i class="fa-solid fa-arrow-left"></i> انتخاب طرح ۲</a>
+        </div>
+
+        <!-- طرح ۳ -->
+        <div class="plan-card plan-full reveal reveal-delay-2">
+            <div class="plan-badge orange"><i class="fa-solid fa-star" style="font-size:.55rem"></i> محبوب‌ترین</div>
+            <div class="plan-name">مدیریت کامل</div>
+            <div class="plan-desc">داشبورد مدیریتی کامل با گزارشات و تحلیل</div>
+            <div class="plan-price-wrap">
+                <div class="plan-price full-price"><small>سالانه</small>۵ میلیون</div>
+                <div class="plan-monthly">۲۵۰ هزار</del> <span>ماهانه</span></div>
+            </div>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> تمام امکانات طرح ۲</li>
+                <li><i class="fa-solid fa-check"></i> داشبورد مدیریتی حرفه‌ای</li>
+                <li><i class="fa-solid fa-check"></i> گزارشات فروش و تحلیل</li>
+                <li><i class="fa-solid fa-check"></i> نمودارهای درآمد هفتگی</li>
+                <li><i class="fa-solid fa-check"></i> آرشیو کامل رسیدها</li>
+                <li><i class="fa-solid fa-check"></i> مدیریت چند شعبه</li>
+                <li><i class="fa-solid fa-xmark"></i> پشتیبان آفلاین</li>
+            </ul>
+            <a onclick="openContact()" class="btn plan-btn orange"><i class="fa-solid fa-arrow-left"></i> انتخاب طرح ۳</a>
+        </div>
+
+        <!-- طرح ۴ -->
+        <div class="plan-card plan-offline reveal reveal-delay-3">
+            <div class="plan-badge red"><i class="fa-solid fa-shield-halved" style="font-size:.6rem"></i> طرح ۴</div>
+            <div class="plan-name">پشتیبان آفلاین</div>
+            <div class="plan-desc">تضمین ادامه سفارش‌گیری در قطعی اینترنت</div>
+            <div class="plan-price-wrap">
+                <div class="plan-price offline-price"><small>سالانه</small>+۵ میلیون</div>
+                <div class="plan-monthly">۱۵۰ هزار <span>ماهانه</span></div>
+            </div>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> سرور محلی در محل شما</li>
+                <li><i class="fa-solid fa-check"></i> کارکرد مستقل بدون اینترنت</li>
+                <li><i class="fa-solid fa-check"></i> همگام‌سازی خودکار با ابر</li>
+                <li><i class="fa-solid fa-check"></i> بدون وقفه در سفارش‌گیری</li>
+                <li><i class="fa-solid fa-check"></i> موازی با طرح‌های دیگر</li>
+                <li><i class="fa-solid fa-check"></i> نصب و راه‌اندازی رایگان</li>
+                <li><i class="fa-solid fa-check"></i> پشتیبانی سخت‌افزاری</li>
+            </ul>
+            <a onclick="openContact()" class="btn plan-btn red" style="cursor:pointer"><i class="fa-solid fa-arrow-left"></i> مشاوره طرح ۴</a>
+        </div>
+    </div>
+
+    <!-- اشتراک شامل -->
+    <div class="includes-bar reveal">
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>سرور و دیتابیس</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>نگهداری سیستم</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>بکاپ‌گیری</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>مانیتورینگ</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>رفع مشکلات فنی</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>بروزرسانی سیستم</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>امنیت</strong></div>
+        <div class="includes-item"><i class="fa-solid fa-circle-check"></i> <strong>پشتیبانی</strong></div>
+    </div>
+
+    <!-- توضیح طرح ۴ -->
+    <div class="offline-explain reveal">
+        <div class="offline-explain-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+            <h3>طرح پشتیبان آفلاین چگونه کار می‌کند؟</h3>
+            <p>
+                این طرح یک سرور محلی کوچک در محل کسب‌وکار شما نصب می‌شود و موازی با سیستم ابری کار می‌کند.
+                در شرایط عادی هر دو سیستم به صورت همزمان فعال هستند و اطلاعات بین آن‌ها همگام‌سازی می‌شود.
+                اما لحظه‌ای که اینترنت قطع شود، سرور محلی به صورت خودکار کنترل را به دست می‌گیرد و سفارش‌گیری بدون کوچک‌ترین وقفه ادامه پیدا می‌کند.
+                وقتی اینترنت برمی‌گردد، تمام داده‌های ذخیره‌شده به صورت خودکار روی سرور ابری همگام می‌شوند.
+            </p>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> قطع اینترنت = بدون تاثیر بر سفارش‌گیری</li>
+                <li><i class="fa-solid fa-check"></i> همگام‌سازی خودکار پس از وصل مجدد</li>
+                <li><i class="fa-solid fa-check"></i> نصب در کنار هر یک از طرح‌های ۱ تا ۳</li>
+                <li><i class="fa-solid fa-check"></i> سخت‌افزار تخصصی با گارانتی</li>
+                <li><i class="fa-solid fa-check"></i> پیکربندی و راه‌اندازی توسط تیم ما</li>
+                <li><i class="fa-solid fa-check"></i> مانیتورینگ سلامت سرور محلی</li>
+                <li><i class="fa-solid fa-check"></i> ذخیره‌سازی محلی تا ۳۰ روز بدون اینترنت</li>
+                <li><i class="fa-solid fa-check"></i> بدون نیاز به دانش فنی از طرف شما</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- نکته ارتقا -->
+    <div class="upgrade-note reveal">
+        <p><i class="fa-solid fa-arrow-up" style="color:#fb923c;margin-left:6px"></i>تمام طرح‌ها <strong>قابلیت ارتقا</strong> دارند — هر زمان که نیازتان تغییر کرد، به طرح بالاتر ارتقا دهید و هزینه مابه‌التفاوت محاسبه می‌شود</p>
     </div>
 </div>
 </section>
@@ -494,50 +599,14 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 <section id="benefits" class="benefits-section">
 <div class="container">
     <h2 class="section-title reveal">چرا کافه‌پلاس؟</h2>
-    <p class="section-subtitle reveal reveal-delay-1">تفاوت واقعی سیستم دیجیتال با روش سنتی — اعداد صحبت می‌کنند</p>
+    <p class="section-subtitle reveal reveal-delay-1">تفاوت واقعی سیستم دیجیتال با روش سنتی</p>
     <div class="benefits-grid">
-        <div class="benefit reveal">
-            <div class="benefit-icon"><i class="fa-solid fa-rocket"></i></div>
-            <div>
-                <h4>سرعت ۴۰ درصد بیشتر</h4>
-                <p>حذف مراحل واسطه: مشتری مستقیم سفارش می‌دهد، نیازی به منتظر ماندن برای گارسون نیست</p>
-            </div>
-        </div>
-        <div class="benefit reveal reveal-delay-1">
-            <div class="benefit-icon"><i class="fa-solid fa-coins"></i></div>
-            <div>
-                <h4>هزینه و استهلاک کمتر</h4>
-                <p>بدون هزینه چاپ منو، بدون دفترچه سفارش، بدون اشتباه محاسبه — صرفه‌جویی مستمر</p>
-            </div>
-        </div>
-        <div class="benefit reveal reveal-delay-2">
-            <div class="benefit-icon"><i class="fa-solid fa-face-smile"></i></div>
-            <div>
-                <h4>راحتی بیشتر مشتری</h4>
-                <p>مشتری در آرامش منو را مرور می‌کند، بدون عجله و فشار — تجربه خرید بهتر، رضایت بیشتر</p>
-            </div>
-        </div>
-        <div class="benefit reveal reveal-delay-3">
-            <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <div>
-                <h4>حذف اشتباهات انسانی</h4>
-                <p>دیگر سفارش اشتباهی ثبت نمی‌شود — مشتری خودش انتخاب می‌کند، محاسبه خودکار است</p>
-            </div>
-        </div>
-        <div class="benefit reveal reveal-delay-4">
-            <div class="benefit-icon"><i class="fa-solid fa-eye"></i></div>
-            <div>
-                <h4>مشاهده برخط سفارشات</h4>
-                <p>مدیر از هر جایی حتی خارج از رستوران می‌تواند وضعیت سفارشات را لحظه‌ای ببیند</p>
-            </div>
-        </div>
-        <div class="benefit reveal reveal-delay-5">
-            <div class="benefit-icon"><i class="fa-solid fa-database"></i></div>
-            <div>
-                <h4>آرشیو خودکار</h4>
-                <p>تمام سفارشات و رسیدها در فضای ابری ذخیره می‌شوند — هر زمان که بخواهید قابل دسترسی‌اند</p>
-            </div>
-        </div>
+        <div class="benefit reveal"><div class="benefit-icon"><i class="fa-solid fa-rocket"></i></div><div><h4>سرعت ۴۰ درصد بیشتر</h4><p>حذف مراحل واسطه: مشتری مستقیم سفارش می‌دهد، نیازی به منتظر ماندن برای گارسون نیست</p></div></div>
+        <div class="benefit reveal reveal-delay-1"><div class="benefit-icon"><i class="fa-solid fa-coins"></i></div><div><h4>هزینه و استهلاک کمتر</h4><p>بدون هزینه چاپ منو، بدون دفترچه سفارش، بدون اشتباه محاسبه — صرفه‌جویی مستمر</p></div></div>
+        <div class="benefit reveal reveal-delay-2"><div class="benefit-icon"><i class="fa-solid fa-face-smile"></i></div><div><h4>راحتی بیشتر مشتری</h4><p>مشتری در آرامش منو را مرور می‌کند، بدون عجله و فشار — تجربه خرید بهتر</p></div></div>
+        <div class="benefit reveal reveal-delay-3"><div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div><div><h4>حذف اشتباهات انسانی</h4><p>دیگر سفارش اشتباهی ثبت نمی‌شود — مشتری خودش انتخاب می‌کند، محاسبه خودکار است</p></div></div>
+        <div class="benefit reveal reveal-delay-4"><div class="benefit-icon"><i class="fa-solid fa-eye"></i></div><div><h4>مشاهده برخط سفارشات</h4><p>مدیر از هر جایی حتی خارج از رستوران می‌تواند وضعیت سفارشات را لحظه‌ای ببیند</p></div></div>
+        <div class="benefit reveal reveal-delay-5"><div class="benefit-icon"><i class="fa-solid fa-database"></i></div><div><h4>آرشیو خودکار</h4><p>تمام سفارشات و رسیدها در فضای ابری ذخیره می‌شوند — هر زمان قابل دسترسی‌اند</p></div></div>
     </div>
 </div>
 </section>
@@ -548,12 +617,7 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     <h2 class="section-title reveal">داشبورد مدیریتی</h2>
     <p class="section-subtitle reveal reveal-delay-1">کنترل کامل کسب‌وکار در یک نگاه — بدون نیاز به نصب نرم‌افزار</p>
     <div class="dash-preview reveal reveal-delay-2">
-        <div class="dash-header">
-            <div class="dash-header-right">
-                <div class="dash-dots"><span></span><span></span><span></span></div>
-                <div class="dash-url">cafe-demo.vercel.app/admin</div>
-            </div>
-        </div>
+        <div class="dash-header"><div class="dash-header-right"><div class="dash-dots"><span></span><span></span><span></span></div><div class="dash-url">cafe-demo.vercel.app/admin</div></div></div>
         <div class="dash-body">
             <div class="dash-sidebar">
                 <div class="dash-sidebar-item active"><i class="fa-solid fa-gauge-high" style="margin-left:8px;font-size:.8rem"></i> داشبورد</div>
@@ -564,29 +628,11 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
                 <div class="dash-sidebar-item"><i class="fa-solid fa-gear" style="margin-left:8px;font-size:.8rem"></i> تنظیمات</div>
             </div>
             <div class="dash-main">
-                <div class="dash-stat">
-                    <div class="dash-stat-label">فروش امروز</div>
-                    <div class="dash-stat-value" style="color:#f97316">۳.۸ M</div>
-                    <div class="dash-stat-change up">↑ ۱۸٪ نسبت به دیروز</div>
-                </div>
-                <div class="dash-stat">
-                    <div class="dash-stat-label">سفارشات</div>
-                    <div class="dash-stat-value">۲۴</div>
-                    <div class="dash-stat-change up">↑ ۱۲٪</div>
-                </div>
-                <div class="dash-stat">
-                    <div class="dash-stat-label">میانگین سفارش</div>
-                    <div class="dash-stat-value">۱۵۸ K</div>
-                    <div class="dash-stat-change down">↓ ۳٪</div>
-                </div>
+                <div class="dash-stat"><div class="dash-stat-label">فروش امروز</div><div class="dash-stat-value" style="color:#f97316">۳.۸ M</div><div class="dash-stat-change up">↑ ۱۸٪ نسبت به دیروز</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">سفارشات</div><div class="dash-stat-value">۲۴</div><div class="dash-stat-change up">↑ ۱۲٪</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">میانگین سفارش</div><div class="dash-stat-value">۱۵۸ K</div><div class="dash-stat-change down">↓ ۳٪</div></div>
                 <div class="dash-chart">
-                    <div class="dash-chart-header">
-                        <div class="dash-chart-title">نمودار فروش هفتگی</div>
-                        <div class="dash-chart-legend">
-                            <span class="leg-1">این هفته</span>
-                            <span class="leg-2">هفته قبل</span>
-                        </div>
-                    </div>
+                    <div class="dash-chart-header"><div class="dash-chart-title">نمودار فروش هفتگی</div><div class="dash-chart-legend"><span class="leg-1">این هفته</span><span class="leg-2">هفته قبل</span></div></div>
                     <div class="chart-bars">
                         <div class="chart-bar-group"><div class="chart-bar orange" style="height:45%"></div><div class="chart-bar blue" style="height:35%"></div></div>
                         <div class="chart-bar-group"><div class="chart-bar orange" style="height:60%"></div><div class="chart-bar blue" style="height:50%"></div></div>
@@ -596,9 +642,7 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
                         <div class="chart-bar-group"><div class="chart-bar orange" style="height:95%"></div><div class="chart-bar blue" style="height:70%"></div></div>
                         <div class="chart-bar-group"><div class="chart-bar orange" style="height:70%"></div><div class="chart-bar blue" style="height:45%"></div></div>
                     </div>
-                    <div class="chart-labels">
-                        <span>شنبه</span><span>یک</span><span>دو</span><span>سه</span><span>چهار</span><span>پنج</span><span>جمعه</span>
-                    </div>
+                    <div class="chart-labels"><span>شنبه</span><span>یک</span><span>دو</span><span>سه</span><span>چهار</span><span>پنج</span><span>جمعه</span></div>
                 </div>
             </div>
         </div>
@@ -611,17 +655,8 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 <div class="container">
     <div class="testimonial-card reveal">
         <div class="quote-icon">❝</div>
-        <p class="testimonial-text">
-            بعد از استفاده از این سیستم، سرعت سرویس‌دهی ما ۴۰ درصد افزایش پیدا کرد.
-            دیگه نیازی به دفترچه سفارش و محاسبه دستی نداریم. مشتری‌ها هم عاشقش شدن — خیلی راحت‌تر سفارش می‌دن!
-        </p>
-        <div class="testimonial-author">
-            <div class="testimonial-avatar">م</div>
-            <div class="testimonial-info">
-                <h4>محمد رضایی</h4>
-                <p>مدیر کافه گل‌ها — تهران</p>
-            </div>
-        </div>
+        <p class="testimonial-text">بعد از استفاده از این سیستم، سرعت سرویس‌دهی ما ۴۰ درصد افزایش پیدا کرد. دیگه نیازی به دفترچه سفارش و محاسبه دستی نداریم. مشتری‌ها هم عاشقش شدن — خیلی راحت‌تر سفارش می‌دن!</p>
+        <div class="testimonial-author"><div class="testimonial-avatar">م</div><div class="testimonial-info"><h4>محمد رضایی</h4><p>مدیر کافه گل‌ها — تهران</p></div></div>
     </div>
 </div>
 </section>
@@ -633,12 +668,8 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
     <h2>آماده ارتقای کسب‌وکارتان هستید؟</h2>
     <p>همین الان مشاوره رایگان بگیرید و تفاوت را حس کنید</p>
     <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;position:relative">
-        <a onclick="openContact()" class="btn btn-primary" style="cursor:pointer">
-            <i class="fa-solid fa-rocket"></i> شروع رایگان
-        </a>
-        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo">
-            <i class="fa-solid fa-eye"></i> تست دمو زنده
-        </a>
+        <a onclick="openContact()" class="btn btn-primary" style="cursor:pointer"><i class="fa-solid fa-rocket"></i> شروع رایگان</a>
+        <a href="https://cafe-demo-gamma-seven.vercel.app/" target="_blank" class="btn btn-demo"><i class="fa-solid fa-eye"></i> تست دمو زنده</a>
     </div>
 </div>
 </div>
@@ -646,9 +677,7 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 
 <!-- FOOTER -->
 <footer>
-<div class="container">
-    <p>© ۲۰۲۵ کافه‌پلاس — طراحی و توسعه توسط <span style="color:#94a3b8">ارسلان</span></p>
-</div>
+<div class="container"><p>© ۲۰۲۵ کافه‌پلاس — طراحی و توسعه توسط <span style="color:#94a3b8">ارسلان</span></p></div>
 </footer>
 
 <!-- MODAL -->
@@ -671,15 +700,10 @@ footer{padding:50px 0;text-align:center;color:#334155;font-size:.85rem;border-to
 </div>
 
 <script>
-// NAVBAR SCROLL
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
-
-// SCROLL REVEAL
 const revealEls=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(el=>observer.observe(el));
-
-// MODAL
 function openContact(){document.getElementById('contactModal').classList.add('show');document.body.style.overflow='hidden'}
 function closeContact(){document.getElementById('contactModal').classList.remove('show');document.body.style.overflow=''}
 document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeContact()});
